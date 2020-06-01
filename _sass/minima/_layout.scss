@@ -38,6 +38,12 @@
     height: 120px;
     width: height;
     float: left;
+
+    @include media-query($on-palm) {
+      visibility: hidden;
+      width: 0px;
+    }
+
     img {
       height: 100%;
       width: auto;
