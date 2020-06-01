@@ -46,19 +46,6 @@ body {
 }
 
 /**
- * Set header size and background image
- */
-header {
-  position: static;
-  display: block;
-  margin: 0 auto;
-  background-image: url('../../assets/diamond.png');
-  background-size: cover;
-  min-height: 14.1vw;
-  z-index: -1;
-}
-
-/**
  * Set `margin-bottom` to maintain vertical rhythm
  */
 h1,

@@ -2,13 +2,57 @@
  * Site header
  */
 .site-header {
+  /**
+   * Set header size and background image
+   */
   border-top: 5px solid $border-color-03;
   border-bottom: 1px solid $border-color-01;
-  min-height: $spacing-unit * 1.865;
-  line-height: $base-line-height * $base-font-size * 2.25;
+  // min-height: $spacing-unit * 1.865;
+  // line-height: $base-line-height * $base-font-size * 2.25;
 
   // Positioning context for the mobile navigation icon
+  width: 100%;
   position: relative;
+  left: 50vw;
+  right: 50vw;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background-image: url('../../assets/diamond.png');
+  background-size: cover;
+  min-height: 14.1vw;
+  // z-index: -1;
+}
+
+.banner {
+  position: relative;
+  color: #141412;
+  display: block;
+  margin: 0 auto;
+  max-width: 1080px;
+  min-height: 5vh;
+  padding: 1rem 1.25rem;
+  text-decoration: none;
+  width: 75%;
+
+  h1 {
+    font-weight: bolder;
+    display: block;
+    margin-block-start: 0.67rem;
+    margin-block-end: 0.67rem;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+  }
+
+  h2 {
+    display: block;
+    font-size: 1.5rem;
+    font-style: oblique;
+    margin-block-start: 0.83rem;
+    margin-block-end: 0.83rem;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: lighter;
+  }
 }
 
 .site-title {
@@ -54,7 +98,7 @@
     }
   }
 
-  label[for="nav-trigger"] {
+  label[for='nav-trigger'] {
     display: block;
     float: right;
     width: 36px;
@@ -92,7 +136,7 @@
     border: none;
     background-color: inherit;
 
-    label[for="nav-trigger"] {
+    label[for='nav-trigger'] {
       display: none;
     }
 
@@ -116,8 +160,6 @@
   }
 }
 
-
-
 /**
  * Site footer
  */
@@ -132,7 +174,7 @@
 }
 
 .feed-subscribe .svg-icon {
-  padding: 5px 5px 2px 0
+  padding: 5px 5px 2px 0;
 }
 
 .contact-list,
@@ -176,7 +218,7 @@
 
 @media screen and (min-width: $on-medium) {
   .footer-col-wrapper {
-    display: flex
+    display: flex;
   }
 
   .footer-col {
@@ -194,8 +236,6 @@
     }
   }
 }
-
-
 
 /**
  * Page content
@@ -232,8 +272,6 @@
   @include relative-font-size(1.5);
 }
 
-
-
 /**
  * Posts
  */
@@ -255,8 +293,16 @@
 .post-content {
   margin-bottom: $spacing-unit;
 
-  h1, h2, h3 { margin-top: $spacing-unit * 2 }
-  h4, h5, h6 { margin-top: $spacing-unit }
+  h1,
+  h2,
+  h3 {
+    margin-top: $spacing-unit * 2;
+  }
+  h4,
+  h5,
+  h6 {
+    margin-top: $spacing-unit;
+  }
 
   h2 {
     @include relative-font-size(1.75);
@@ -286,24 +332,25 @@
   }
 }
 
-
 .social-media-list {
   display: table;
   margin: 0 auto;
   li {
     float: left;
     margin: 5px 10px 5px 0;
-    &:last-of-type { margin-right: 0 }
+    &:last-of-type {
+      margin-right: 0;
+    }
     a {
       display: block;
       padding: $spacing-unit / 4;
       border: 1px solid $border-color-01;
-      &:hover { border-color: $border-color-02 }
+      &:hover {
+        border-color: $border-color-02;
+      }
     }
   }
 }
-
-
 
 /**
  * Pagination navbar
@@ -312,7 +359,8 @@
   margin-bottom: $spacing-unit;
   @extend .social-media-list;
   li {
-    a, div {
+    a,
+    div {
       min-width: 41px;
       text-align: center;
       box-sizing: border-box;
@@ -329,8 +377,6 @@
     }
   }
 }
-
-
 
 /**
  * Grid helpers
