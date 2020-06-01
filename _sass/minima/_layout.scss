@@ -34,6 +34,16 @@
   text-decoration: none;
   width: 75%;
 
+  .img-container {
+    height: 120px;
+    width: height;
+    float: left;
+    img {
+      height: 100%;
+      width: auto;
+    }
+  }
+
   h1 {
     font-weight: bolder;
     display: block;
