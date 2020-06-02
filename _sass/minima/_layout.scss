@@ -416,6 +416,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: auto;
+  gap: 10px;
 
   @include media-query($on-palm) {
     grid-template-columns: 1fr;
@@ -424,27 +425,41 @@
   .portfolio-block {
     display: block;
     position: relative;
-    justify-self: center;
+    // justify-self: center;
+    background-color: $sol-base03;
     width: $portfolio-block-size;
     height: $portfolio-block-size;
     @include easeLinks;
 
+    @include media-query($on-palm) {
+      width: calc();
+    }
+
     .portfolio-front {
       background-position: center;
       background-size: contain;
+      width: auto;
+      height: $portfolio-block-size;
+
+      h3 {
+        margin: 0px $spacing-unit / 2;
+        padding: 0px;
+        visibility: hidden;
+      }
 
       p {
+        margin: 0px;
+        padding: $spacing-unit / 2;
         font-size: 0.85rem;
         text-align: justify;
-        width: auto;
-        height: $portfolio-block-size;
         visibility: hidden;
       }
     }
 
     &:hover {
-      scale: 1.1;
+      scale: 1.05;
 
+      h3,
       p {
         visibility: visible;
       }

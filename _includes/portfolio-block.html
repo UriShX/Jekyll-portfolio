@@ -3,6 +3,9 @@
     style="background-image: url('{{ include.mainImg }}');"
     class="portfolio-front"
   >
+    {% if include.heading %}
+    <h3>{{ include.heading }}</h3>
+    {% endif %}
     <p>{{ include.text }}</p>
   </div>
 </div>
