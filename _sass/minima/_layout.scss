@@ -1,3 +1,4 @@
+@import 'minima/mixins';
 /**
  * Site header
  */
@@ -405,5 +406,48 @@
 @media screen and (min-width: $on-large) {
   .one-half {
     width: calc(50% - (#{$spacing-unit} / 2));
+  }
+}
+
+/**
+ * Portfolio
+ */
+.portfolio-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+
+  @include media-query($on-palm) {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-block {
+    display: block;
+    position: relative;
+    justify-self: center;
+    width: $portfolio-block-size;
+    height: $portfolio-block-size;
+    @include easeLinks;
+
+    .portfolio-front {
+      background-position: center;
+      background-size: contain;
+
+      p {
+        font-size: 0.85rem;
+        text-align: justify;
+        width: auto;
+        height: $portfolio-block-size;
+        visibility: hidden;
+      }
+    }
+
+    &:hover {
+      scale: 1.1;
+
+      p {
+        visibility: visible;
+      }
+    }
   }
 }

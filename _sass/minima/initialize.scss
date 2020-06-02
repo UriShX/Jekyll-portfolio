@@ -25,6 +25,8 @@ $on-laptop: 800px !default;
 $on-medium: $on-palm !default;
 $on-large: $on-laptop !default;
 
+$portfolio-block-size: 256px !default;
+
 // Use media queries like this:
 // @include media-query($on-palm) {
 //   .wrapper {
