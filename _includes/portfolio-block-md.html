@@ -1,0 +1,13 @@
+<div class="portfolio-block">
+  {% assign content=site.data.portfolio[include.origin].content %} {% capture
+  my_include %} {% include_relative {{ content }} %} {% endcapture %}
+  <div
+    style="background-image: url('{{ site.data.portfolio[include.origin].cover }}');"
+    class="portfolio-front"
+  >
+    {% if site.data.portfolio[include.origin].title %}
+    <h3>{{ site.data.portfolio[include.origin].title }}</h3>
+    {% endif %}
+    <p>{{ my_include | markdownify }}</p>
+  </div>
+</div>
