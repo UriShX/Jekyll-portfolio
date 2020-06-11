@@ -1,13 +1,16 @@
-<div class="portfolio-block">
-  {% assign content=site.data.portfolio[include.origin].content %} {% capture
-  my_include %} {% include_relative {{ content }} %} {% endcapture %}
+{% assign side = include.origin | modulo:2 %} {% if side == 1 %} {% assign
+align-class="portfolio-l" %} {% else %} {% assign align-class="portfolio-r" %}
+{% endif %} {% assign block-data=site.data.portfolio[include.origin] %} {%
+assign content=block-data.content %} {% capture my_include %} {%
+include_relative {{ content }} %} {% endcapture %}
+<div class="portfolio-block {{ align-class }}">
   <div
-    style="background-image: url('{{ site.data.portfolio[include.origin].cover }}');"
+    style="background-image: url('{{ block-data.cover }}');"
     class="portfolio-front"
   >
-    {% if site.data.portfolio[include.origin].title %}
-    <h3>{{ site.data.portfolio[include.origin].title }}</h3>
+    {% if block-data.title %}
+    <h3>{{ block-data.title }}</h3>
     {% endif %}
-    <p>{{ my_include | markdownify }}</p>
+    <p>{{ my_include }}</p>
   </div>
 </div>

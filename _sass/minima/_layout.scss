@@ -422,10 +422,24 @@
     grid-template-columns: 1fr;
   }
 
+  .portfolio-l {
+    justify-self: end;
+  }
+
+  .portfolio-r {
+    justify-self: start;
+  }
+
+  .portfolio-l,
+  .portfolio-r {
+    @include media-query($on-palm) {
+      justify-self: center;
+    }
+  }
+
   .portfolio-block {
     display: block;
     position: relative;
-    // justify-self: center;
     background-color: $sol-base03;
     width: $portfolio-block-size;
     height: $portfolio-block-size;

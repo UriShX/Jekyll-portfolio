@@ -2,3 +2,19 @@
   cover: /assets/logo.png
   title: Something
   content: _portfolio/1.md
+2:
+  cover: /assets/logo.png
+  title: Something2
+  content: _portfolio/1.md
+3:
+  cover: /assets/logo.png
+  title: Something3
+  content: _portfolio/1.md
+4:
+  cover: /assets/logo.png
+  title: Something4
+  content: _portfolio/1.md
+5:
+  cover: /assets/logo.png
+  title: Something5
+  content: _portfolio/1.md

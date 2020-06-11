@@ -6,8 +6,12 @@ layout: default
   <header class="post-header">
     <h1 class="post-title">{{ page.title | escape }}</h1>
   </header>
-
   <div class="post-content">
     {{ content }}
+
+    <div class="portfolio-content">
+      {% for i in site.data.portfolio %} {% include portfolio-block-md.html
+      origin=i.first %} {% endfor %}
+    </div>
   </div>
 </div>
