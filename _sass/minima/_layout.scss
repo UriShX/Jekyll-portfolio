@@ -73,6 +73,32 @@
   }
 }
 
+.top-nav {
+  align-self: flex-start;
+  position: sticky;
+  top: 0;
+  background: darken($border-color-02, 10);
+
+  .nav-link {
+    display: inline-block;
+    line-height: calc(1rem + 0.5rem);
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    color: $site-title-color;
+    text-decoration-line: none;
+    @include easeLinks;
+
+    &:hover {
+      background-color: $border-color-03;
+      color: $link-hover-color;
+    }
+  }
+  .link-exact-active {
+    color: $brand-color-light;
+    font-style: italic;
+  }
+}
+
 .site-title {
   @include relative-font-size(2.25);
   font-weight: 300;
@@ -450,10 +476,24 @@
     }
 
     .portfolio-front {
+      position: absolute;
       background-position: center;
       background-size: contain;
       width: auto;
       height: $portfolio-block-size;
+      z-index: 2;
+
+      
+
+    &:hover {
+      scale: 1.05;
+    }
+  
+    }
+
+    .portfolio-excerpt {
+      position: absolute;
+      z-index: 1;
 
       h3 {
         margin: 0px $spacing-unit / 2;
@@ -468,14 +508,12 @@
         text-align: justify;
         visibility: hidden;
       }
-    }
 
-    &:hover {
-      scale: 1.05;
-
-      h3,
-      p {
-        visibility: visible;
+      &:hover {  
+        h3,
+        p {
+          visibility: visible;
+        }
       }
     }
   }
