@@ -464,8 +464,9 @@
   }
 
   .portfolio-block {
-    display: block;
+    // display: block;
     position: relative;
+    overflow: hidden;
     background-color: $sol-base03;
     width: $portfolio-block-size;
     height: $portfolio-block-size;
@@ -475,24 +476,36 @@
       width: calc();
     }
 
+    &:hover {
+      .portfolio-front {
+        scale: 1.1;
+        z-index: 1;
+      }
+      
+      .portfolio-excerpt {
+        h3,
+        p {
+          visibility: visible;
+          z-index: 2;
+        }
+      }
+    }
+
     .portfolio-front {
-      position: absolute;
+      // position: absolute;
+      // grid-area: 1 / 1 / 1 / 1;
       background-position: center;
       background-size: contain;
       width: auto;
       height: $portfolio-block-size;
-      z-index: 2;
-
-      
-
-    &:hover {
-      scale: 1.05;
-    }
-  
+      z-index: 2;  
     }
 
     .portfolio-excerpt {
       position: absolute;
+      top: 0;
+      // grid-area: 1 / 1 / 1 / 1;
+      margin-top: 0px;
       z-index: 1;
 
       h3 {
@@ -507,13 +520,6 @@
         font-size: 0.85rem;
         text-align: justify;
         visibility: hidden;
-      }
-
-      &:hover {  
-        h3,
-        p {
-          visibility: visible;
-        }
       }
     }
   }
