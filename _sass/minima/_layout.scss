@@ -514,7 +514,7 @@
     .portfolio-front {
       position: relative;
       background-position: center;
-      background-size: contain;
+      background-size: cover;
       width: auto;
       height: $portfolio-block-size;
       z-index: 2;

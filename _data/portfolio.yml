@@ -1,21 +1,27 @@
 1:
-  cover: /assets/logo.png
-  title: Something
-  content: _portfolio/1.md
-  link: https://github.com/UriShX/portfolio
+  cover: /assets/img/wheel-right.png
+  title: Perpetuum Mobile, Shachar Marcus, MUZA, 2019
+  content: _portfolio/perpetuum-mobile.md
   modal:
-    - img: /assets/logo.png
-      text: Some text
-    - img: /assets/logo.png
-      text: Some other text
+    - img: /assets/img/wheel-front-1.png
+    - img: /assets/img/concept-omri.jpg
+    - img: /assets/img/ezgif.com-optimize-4.gif
+    - img: /assets/img/wheel-right.png
+    - img: /assets/img/IMG_20190925_090039.jpg
 2:
-  cover: /assets/logo.png
-  title: Something2
-  content: _portfolio/1.md
+  cover: /assets/img/IMG_20190429_161110.jpg
+  title: Smart kitchen scale for bread dough
+  content: _portfolio/scale.md
+  link: https://hackaday.io/project/164849-yet-another-smart-kitchen-scale
+  modal:
+    - img: /assets/img/IMG_20190429_161110.jpg
+    - img: /assets/img/IMG_20190429_160952_cropped.jpg
+    - img: /assets/img/ESP32_weight_scale_bb.png
 3:
   cover: /assets/logo.png
   title: Something3
   content: _portfolio/1.md
+  link: https://github.com/UriShX/portfolio
 4:
   cover: /assets/logo.png
   title: Something4

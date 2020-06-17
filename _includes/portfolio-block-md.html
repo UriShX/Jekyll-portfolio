@@ -16,7 +16,7 @@
         {% if block-data.title %}
             <h3>{{ block-data.title }}</h3>
         {% endif %}
-        <p>{{ my_include }}</p>
+        <p>{{ my_include | truncate: 512 }}</p>
     </div>
     <div class="portflio-links">
         {% if block-data.link %}
@@ -25,14 +25,14 @@
             </a>
         {% endif %}
         {% if block-data.modal %}
-            <a data-cssmodal-nohash href="#modal-{{ include.origin }}">
+            <a data-cssmodal-nohash href="#modal-gallery-{{ include.origin }}">
                 <i class="material-icons">pageview</i>
             </a>
         {% endif %}
     </div>
 </div>
 
-<section aria-hidden="true" aria-labelledby="modal-label" class="modal modal--gallery" data-cssmodal-resize="true" id="modal-{{ include.origin }}" role="dialog" tabindex="-1">
+<section aria-hidden="true" aria-labelledby="modal-label" class="modal modal--gallery" data-cssmodal-maxwidth="400" data-cssmodal-resize="true" id="modal-gallery-{{ include.origin }}" role="dialog" tabindex="-1">
     <div class="modal-inner">
         <div class="modal-content">
             <div class="spinner">
@@ -60,7 +60,7 @@
                 {% for i in block-data.modal %}
 
                     <li data-caption="{{ i.text }}">
-                        <a href="#modal-gallery/{{ include.origin }}/{% increment var %}">
+                        <a href="#modal-gallery-{{ include.origin }}/{% increment var %}">
                             <img alt="{{ i.text }}" data-src-fullsize="{{ i.img }}">
                         </a>
                     </li>

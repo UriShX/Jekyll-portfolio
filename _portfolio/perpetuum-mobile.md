@@ -1,0 +1,1 @@
+Mechanical design, characterization and selection of drive mechanism / motor, production of shop drawings, supervision on construction. Produced in collaboration with studio Omri Ben Artzi, as an installation in the exhibition "Data Mining", Shachar Marcus, MUZA, 2019.
