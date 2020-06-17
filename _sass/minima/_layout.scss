@@ -443,10 +443,20 @@
   width: calc(#{$content-width} - (#{$spacing-unit}));
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: auto;
-  gap: 10px;
+  gap: $grid-gap;
 
   @include media-query($on-palm) {
+    width: 90vw;
     grid-template-columns: 1fr;
+
+    .portfolio-overlay,
+    .portfolio-excerpt,
+    .portfolio-content,
+    .portfolio-block,
+    .portfolio-front {
+      width: 80vw !important;
+      height: 80vw !important;
+    }
   }
 
   .portfolio-l {
