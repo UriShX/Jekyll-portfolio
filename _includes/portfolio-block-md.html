@@ -19,6 +19,11 @@
         <p>{{ my_include }}</p>
     </div>
     <div class="portflio-links">
+        {% if block-data.link %}
+            <a data-cssmodal-nohash href="{{ block-data.link }}" target="_blank" rel="noopener noreferrer">
+                <i class="material-icons">link</i>
+            </a>
+        {% endif %}
         <a data-cssmodal-nohash href="#modal-{{ include.origin }}">
             <i class="material-icons">pageview</i>
         </a>

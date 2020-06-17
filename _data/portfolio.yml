@@ -2,6 +2,7 @@
   cover: /assets/logo.png
   title: Something
   content: _portfolio/1.md
+  link: https://github.com/UriShX/portfolio
 2:
   cover: /assets/logo.png
   title: Something2

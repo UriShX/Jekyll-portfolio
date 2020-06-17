@@ -551,6 +551,14 @@
       text-align: center;
       z-index: -1;
       @include easeLinks;
+
+      i {
+        font-size: 36px;
+      }
+
+      a:hover {
+        text-decoration: none;
+      }
     }
   }
 }
