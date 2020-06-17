@@ -11,11 +11,14 @@
 {% endcapture %}
 <div class="portfolio-block {{ align-class }}">
     <div class="portfolio-front" style="background-image: url('{{ block-data.cover }}');"></div>
+    <div class="portfolio-overlay"></div>
     <div class="portfolio-excerpt">
         {% if block-data.title %}
             <h3>{{ block-data.title }}</h3>
         {% endif %}
         <p>{{ my_include }}</p>
+    </div>
+    <div class="portflio-links">
         <a data-cssmodal-nohash href="#modal-{{ include.origin }}">
             <i class="material-icons">pageview</i>
         </a>

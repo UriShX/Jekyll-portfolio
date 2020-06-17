@@ -440,6 +440,7 @@
  */
 .portfolio-content {
   display: grid;
+  width: calc(#{$content-width} - (#{$spacing-unit}));
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: auto;
   gap: 10px;
@@ -464,13 +465,11 @@
   }
 
   .portfolio-block {
-    // display: block;
     position: relative;
     overflow: hidden;
     background-color: $sol-base03;
     width: $portfolio-block-size;
     height: $portfolio-block-size;
-    @include easeLinks;
 
     @include media-query($on-palm) {
       width: calc();
@@ -481,32 +480,54 @@
         scale: 1.1;
         z-index: 1;
       }
+
+      .portfolio-overlay {
+        z-index: 2;
+        opacity: 1;
+      }
       
       .portfolio-excerpt {
+        transform: translateY($portfolio-block-size);
+        z-index: 3;
         h3,
         p {
           visibility: visible;
-          z-index: 2;
         }
+      }
+
+      .portflio-links {
+        transform: translateY(-$portfolio-block-size / 4);
+        z-index: 5;
       }
     }
 
     .portfolio-front {
-      // position: absolute;
-      // grid-area: 1 / 1 / 1 / 1;
+      position: relative;
       background-position: center;
       background-size: contain;
       width: auto;
       height: $portfolio-block-size;
-      z-index: 2;  
+      z-index: 2;
+      @include easeLinks;
+    }
+
+    .portfolio-overlay{
+      position: absolute;
+      top: 0px;
+      height: $portfolio-block-size;
+      width: $portfolio-block-size;
+      background-color: rgba(64, 64, 64, 0.65);
+      opacity: 0;
+      z-index: 1;
+      @include easeLinks;
     }
 
     .portfolio-excerpt {
       position: absolute;
-      top: 0;
-      // grid-area: 1 / 1 / 1 / 1;
-      margin-top: 0px;
+      top: -$portfolio-block-size;
+      transform-origin: top;
       z-index: 1;
+      @include easeLinks;
 
       h3 {
         margin: 0px $spacing-unit / 2;
@@ -521,6 +542,15 @@
         text-align: justify;
         visibility: hidden;
       }
+    }
+
+    .portflio-links {
+      position: absolute;
+      transform-origin: bottom;
+      width: 100%;
+      text-align: center;
+      z-index: -1;
+      @include easeLinks;
     }
   }
 }
