@@ -56,4 +56,6 @@ $portfolio-block-size: 380px !default;
   // Defines structure and style based on CSS selectors.
     'minima/custom-styles',
   // Css-modal
-    'drublic-css-modal/modal';
+    'drublic-css-modal/modal',
+    'drublic-css-modal/plugins/modal-gallery',
+    'drublic-css-modal/plugins/modal-spinner';

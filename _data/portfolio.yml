@@ -3,6 +3,11 @@
   title: Something
   content: _portfolio/1.md
   link: https://github.com/UriShX/portfolio
+  modal:
+    - img: /assets/logo.png
+      text: Some text
+    - img: /assets/logo.png
+      text: Some other text
 2:
   cover: /assets/logo.png
   title: Something2
