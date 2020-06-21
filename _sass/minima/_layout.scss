@@ -511,9 +511,10 @@
       }
     }
 
+    
     .portfolio-front {
       position: relative;
-      background-position: center;
+      background-position: center !important;
       background-size: cover;
       width: auto;
       height: $portfolio-block-size;
@@ -523,7 +524,7 @@
 
     .portfolio-overlay{
       position: absolute;
-      top: 0px;
+      top: 0px !important;
       height: $portfolio-block-size;
       width: $portfolio-block-size;
       background-color: rgba(64, 64, 64, 0.65);
@@ -534,7 +535,7 @@
 
     .portfolio-excerpt {
       position: absolute;
-      top: -$portfolio-block-size;
+      top: -$portfolio-block-size !important;
       transform-origin: top;
       z-index: 1;
       @include easeLinks;
@@ -571,4 +572,10 @@
       }
     }
   }
+}
+
+.portfolio-modal {
+  @extend %modal;
+
+  background-color: rgba($border-color-02, 0.65);
 }
