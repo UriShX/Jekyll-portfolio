@@ -438,7 +438,7 @@
 /**
  * Portfolio
  */
-.portfolio-content {
+.portfolio-wrapper {
   display: grid;
   width: calc(#{$content-width} - (#{$spacing-unit}));
   grid-template-columns: repeat(2, 1fr);
