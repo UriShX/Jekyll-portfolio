@@ -18,7 +18,7 @@ layout: default
                         {% if project.title %}
                             <h3>{{ project.title }}</h3>
                         {% endif %}
-                        <p>{{ project.content | truncate: 512 }}</p>
+                        {{ project | truncate: 512 }}
                     </div>
                     <div class="portflio-links">
                         {% if project.link %}
