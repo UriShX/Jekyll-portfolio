@@ -440,7 +440,7 @@
  */
 .portfolio-wrapper {
   display: grid;
-  width: calc(#{$content-width} - (#{$spacing-unit}));
+  max-width: $portfolio-max-width;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: auto;
   gap: $grid-gap;
@@ -480,9 +480,11 @@
     background-color: $sol-base03;
     width: $portfolio-block-size;
     height: $portfolio-block-size;
+    max-width: $portfolio-max-block-size;
+    max-height: $portfolio-max-block-size;
 
     @include media-query($on-palm) {
-      width: calc();
+      width: calc(100vw / 2 - #{$grid-gap} * 2);
     }
 
     &:hover {
@@ -497,7 +499,7 @@
       }
       
       .portfolio-excerpt {
-        transform: translateY($portfolio-block-size);
+        transform: translateY($portfolio-max-block-size);
         z-index: 3;
         h3,
         p {
@@ -506,7 +508,7 @@
       }
 
       .portflio-links {
-        transform: translateY(-$portfolio-block-size / 4);
+        transform: translateY(calc( -1 * #{$portfolio-block-size} / 4));
         z-index: 5;
       }
     }
@@ -520,6 +522,8 @@
       background-size: cover;
       width: $portfolio-block-size;
       height: $portfolio-block-size;
+      max-width: $portfolio-max-block-size;
+      max-height: $portfolio-max-block-size;
       z-index: 2;
       @include easeLinks;
     }
@@ -528,8 +532,10 @@
       position: absolute;
       top: 0;
       left: 0;
-      height: $portfolio-block-size;
       width: $portfolio-block-size;
+      height: $portfolio-block-size;
+      max-width: $portfolio-max-block-size;
+      max-height: $portfolio-max-block-size;
       background-color: rgba(#ffffff, 0.65);
       opacity: 0;
       z-index: 1;
@@ -538,8 +544,12 @@
 
     .portfolio-excerpt {
       position: absolute;
-      top: -$portfolio-block-size;
+      top: -$portfolio-max-block-size;
       left: 0;
+      height: calc(#{$portfolio-block-size} * 0.7);
+      overflow: hidden;
+      overflow-wrap: break-word;
+      text-overflow: ellipsis;
       transform-origin: top;
       color: $sol-base03;
       z-index: 1;
@@ -554,15 +564,16 @@
       p {
         margin: 0px;
         padding: $spacing-unit / 2;
-        font-size: 0.85rem;
+        font-size: $small-font-size;
         text-align: justify;
+        text-overflow: ellipsis;
         visibility: hidden;
       }
     }
 
     .portflio-links {
       position: absolute;
-      top: $portfolio-block-size;
+      top: unquote('min(#{$portfolio-block-size}, #{$portfolio-max-block-size})');//block-max-size() * 1px;
       left: 0;
       transform-origin: bottom;
       width: 100%;

@@ -9,6 +9,7 @@ modal:
   - img: /assets/img/IMG_20190429_160952_cropped.jpg
   - img: /assets/img/ESP32_weight_scale_bb.png
 ---
+# 2nd title
 An ESP32 based kitchen scale for bread baking. Connects to Google sheets over WiFi to retrieve bread formulas, and to save measured weight of ingredients.
 BLE serves to define WiFi, as well as display current measurement.
 Calculates baker's percentage on the fly.

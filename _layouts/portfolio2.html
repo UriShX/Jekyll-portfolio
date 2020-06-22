@@ -11,14 +11,22 @@ layout: default
 
         <div class="portfolio-wrapper">
             {% for project in site.portfolio %}
-                <div class="portfolio-block">
+                {% assign side = forloop.index | modulo:2 %}
+                {% if side == 1 %}
+                    {% assign align-class="portfolio-l" %}
+                {% else %}
+                    {% assign align-class="portfolio-r" %}
+                {% endif %}
+                <div class="portfolio-block {{ align-class }}" id="portfolio-block-{{ forloop.index }}">
                     <div class="portfolio-front" style="background-image: url('{{ project.cover }}');"></div>
                     <div class="portfolio-overlay"></div>
                     <div class="portfolio-excerpt">
                         {% if project.title %}
                             <h3>{{ project.title }}</h3>
                         {% endif %}
-                        {{ project | truncate: 512 }}
+                        <p>
+                            {{ project | strip_html | truncate: 512 }}
+                        </p>
                     </div>
                     <div class="portflio-links">
                         {% if project.link %}
