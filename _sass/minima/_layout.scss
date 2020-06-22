@@ -508,7 +508,7 @@
       }
 
       .portflio-links {
-        transform: translateY(calc( -1 * #{$portfolio-block-size} / 4));
+        transform: unquote('translateY(calc( -1 * min(#{$portfolio-block-size}, #{$portfolio-max-block-size}) / 4))');
         z-index: 5;
       }
     }
@@ -566,6 +566,8 @@
         padding: $spacing-unit / 2;
         font-size: $small-font-size;
         text-align: justify;
+        overflow: hidden;
+      overflow-wrap: break-word;
         text-overflow: ellipsis;
         visibility: hidden;
       }
@@ -573,7 +575,7 @@
 
     .portflio-links {
       position: absolute;
-      top: unquote('min(#{$portfolio-block-size}, #{$portfolio-max-block-size})');//block-max-size() * 1px;
+      top: unquote('min(#{$portfolio-block-size}, #{$portfolio-max-block-size})');
       left: 0;
       transform-origin: bottom;
       width: 100%;
