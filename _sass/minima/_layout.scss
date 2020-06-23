@@ -446,17 +446,18 @@
   gap: $grid-gap;
 
   @include media-query($on-palm) {
+    $portfolio-block-size: 160vw;
     width: 90vw;
     grid-template-columns: 1fr;
 
-    .portfolio-overlay,
-    .portfolio-excerpt,
-    .portfolio-content,
-    .portfolio-block,
-    .portfolio-front {
-      width: 80vw !important;
-      height: 80vw !important;
-    }
+    // .portfolio-overlay,
+    // .portfolio-excerpt,
+    // .portfolio-content,
+    // .portfolio-block,
+    // .portfolio-front {
+    //   width: 80vw !important;
+    //   height: 80vw !important;
+    // }
   }
 
   .portfolio-l {
@@ -484,7 +485,7 @@
     max-height: $portfolio-max-block-size;
 
     @include media-query($on-palm) {
-      width: calc(100vw / 2 - #{$grid-gap} * 2);
+      width: calc(100vw - #{$grid-gap} * 2);
     }
 
     &:hover {
@@ -546,16 +547,25 @@
       position: absolute;
       top: -$portfolio-max-block-size;
       left: 0;
-      height: calc(#{$portfolio-block-size} * 0.7);
-      overflow: hidden;
-      overflow-wrap: break-word;
-      text-overflow: ellipsis;
+      width: $portfolio-block-size;
+      max-width: $portfolio-max-block-size;
+      height: unquote('calc(min(#{$portfolio-block-size}, #{$portfolio-max-block-size}) * 0.7)');
+      // overflow: hidden;
       transform-origin: top;
       color: $sol-base03;
       z-index: 1;
       @include easeLinks;
 
       h3 {
+        @include relative-font-size(1.375);
+
+        /**
+         * If heading should be single line, uncomment the three following lines to ensure
+         * truncating and addition of wllipsis
+         */
+        // white-space: nowrap;
+        // overflow: hidden;
+        // text-overflow: ellipsis;
         margin: 0px $spacing-unit / 2;
         padding: 0px;
         visibility: hidden;
@@ -565,10 +575,8 @@
         margin: 0px;
         padding: $spacing-unit / 2;
         font-size: $small-font-size;
+        white-space: pre-line;
         text-align: justify;
-        overflow: hidden;
-      overflow-wrap: break-word;
-        text-overflow: ellipsis;
         visibility: hidden;
       }
     }
