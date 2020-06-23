@@ -28,7 +28,10 @@
   position: relative;
   color: darken($color: $site-title-color, $amount: 10);
   display: block;
-  margin: 0 auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: auto;
+  margin-left: unquote('max(calc((100% - #{$content-width}) / 2), 10vw)');
   max-width: 1080px;
   min-height: 5vh;
   padding: 1rem 1.25rem;
