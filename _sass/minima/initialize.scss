@@ -19,16 +19,16 @@ $table-text-align: left !default;
 // Width of the content area
 $content-width: 800px !default;
 
+$on-phone: 400px !default;
 $on-palm: 600px !default;
 $on-laptop: 800px !default;
 
+$on-small: $on-phone !default;
 $on-medium: $on-palm !default;
 $on-large: $on-laptop !default;
 
 $grid-gap: 10px !default;
-$portfolio-max-width: calc(#{$content-width} - (#{$spacing-unit}));
 $portfolio-max-block-size: 380px !default;
-$portfolio-block-size: calc(100vw / 2 - #{$grid-gap} * 2);
 
 // Use media queries like this:
 // @include media-query($on-palm) {
@@ -47,6 +47,32 @@ $portfolio-block-size: calc(100vw / 2 - #{$grid-gap} * 2);
 
 @mixin relative-font-size($ratio) {
   font-size: #{$ratio}rem;
+}
+
+/* mixin for multiline http://hackingui.com/front-end/a-pure-css-solution-for-multiline-text-truncation/ */
+@mixin multiLineEllipsis($lineHeight: 1.2em, $lineCount: 1, $bgColor: white){
+  overflow: hidden;
+  position: relative;
+  line-height: $lineHeight;
+  max-height: $lineHeight * $lineCount; 
+  text-align: justify;
+  margin-right: -1em;
+  padding-right: 1em;
+  &:before {
+    content: '...';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    background: $bgColor;
+  }
 }
 
 // Import pre-styling-overrides hook and style-partials.

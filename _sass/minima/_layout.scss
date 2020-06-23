@@ -439,25 +439,39 @@
  * Portfolio
  */
 .portfolio-wrapper {
+  $local-block-size: calc(100vw / 2 - #{$grid-gap} * 2);
+  $local-max-block-size: $portfolio-max-block-size;
   display: grid;
-  max-width: $portfolio-max-width;
+  max-width: calc(#{$content-width} - (#{$spacing-unit}));
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: auto;
   gap: $grid-gap;
 
   @include media-query($on-palm) {
-    $portfolio-block-size: 160vw;
     width: 90vw;
     grid-template-columns: 1fr;
+    grid-template-rows: auto;
 
-    // .portfolio-overlay,
-    // .portfolio-excerpt,
-    // .portfolio-content,
-    // .portfolio-block,
-    // .portfolio-front {
-    //   width: 80vw !important;
-    //   height: 80vw !important;
-    // }
+    .portfolio-overlay,
+    .portfolio-content,
+    .portfolio-block,
+    .portfolio-front {
+      width: 80vw !important;
+      height: 80vw !important;
+    }
+
+    .portfolio-excerpt {
+      width: 80vw !important;
+      height: unquote('calc(min(80vw, #{$local-max-block-size}) * 0.7) !important');
+    }
+
+    .portflio-links {
+      top: unquote('min(80vw, #{$local-max-block-size}) !important');
+
+      i {
+        font-size: 28px !important;
+      }
+    }
   }
 
   .portfolio-l {
@@ -479,14 +493,10 @@
     position: relative;
     overflow: hidden;
     background-color: $sol-base03;
-    width: $portfolio-block-size;
-    height: $portfolio-block-size;
-    max-width: $portfolio-max-block-size;
-    max-height: $portfolio-max-block-size;
-
-    @include media-query($on-palm) {
-      width: calc(100vw - #{$grid-gap} * 2);
-    }
+    width: $local-block-size;
+    height: $local-block-size;
+    max-width: $local-max-block-size;
+    max-height: $local-max-block-size;
 
     &:hover {
       .portfolio-front {
@@ -500,7 +510,7 @@
       }
       
       .portfolio-excerpt {
-        transform: translateY($portfolio-max-block-size);
+        transform: translateY($local-max-block-size);
         z-index: 3;
         h3,
         p {
@@ -509,8 +519,14 @@
       }
 
       .portflio-links {
-        transform: unquote('translateY(calc( -1 * min(#{$portfolio-block-size}, #{$portfolio-max-block-size}) / 4))');
+        transform: unquote('translateY(calc( -1 * min(#{$local-block-size}, #{$local-max-block-size}) / 5))');
         z-index: 5;
+      }
+
+      @include media-query($on-palm) {
+        .portflio-links {
+          transform: unquote('translateY(calc( -1 * min(80vw, #{$portfolio-max-block-size}) / 5)) !important') ;
+        }
       }
     }
 
@@ -521,10 +537,10 @@
       left: 0;
       background-position: center !important;
       background-size: cover;
-      width: $portfolio-block-size;
-      height: $portfolio-block-size;
-      max-width: $portfolio-max-block-size;
-      max-height: $portfolio-max-block-size;
+      width: $local-block-size;
+      height: $local-block-size;
+      max-width: $local-max-block-size;
+      max-height: $local-max-block-size;
       z-index: 2;
       @include easeLinks;
     }
@@ -533,10 +549,10 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: $portfolio-block-size;
-      height: $portfolio-block-size;
-      max-width: $portfolio-max-block-size;
-      max-height: $portfolio-max-block-size;
+      width: $local-block-size;
+      height: $local-block-size;
+      max-width: $local-max-block-size;
+      max-height: $local-max-block-size;
       background-color: rgba(#ffffff, 0.65);
       opacity: 0;
       z-index: 1;
@@ -545,11 +561,11 @@
 
     .portfolio-excerpt {
       position: absolute;
-      top: -$portfolio-max-block-size;
+      top: -$local-max-block-size;
       left: 0;
-      width: $portfolio-block-size;
-      max-width: $portfolio-max-block-size;
-      height: unquote('calc(min(#{$portfolio-block-size}, #{$portfolio-max-block-size}) * 0.7)');
+      width: $local-block-size;
+      max-width: $local-max-block-size;
+      height: unquote('calc(min(#{$local-block-size}, #{$local-max-block-size}) * 0.7)');
       // overflow: hidden;
       transform-origin: top;
       color: $sol-base03;
@@ -572,6 +588,8 @@
       }
 
       p {
+        // @include multiLineEllipsis($lineHeight: $small-font-size, $lineCount: 3, $bgColor: white);  
+
         margin: 0px;
         padding: $spacing-unit / 2;
         font-size: $small-font-size;
@@ -583,7 +601,7 @@
 
     .portflio-links {
       position: absolute;
-      top: unquote('min(#{$portfolio-block-size}, #{$portfolio-max-block-size})');
+      top: unquote('min(#{$local-block-size}, #{$local-max-block-size})');
       left: 0;
       transform-origin: bottom;
       width: 100%;
