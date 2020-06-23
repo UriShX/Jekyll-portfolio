@@ -29,7 +29,7 @@
   color: darken($color: $site-title-color, $amount: 10);
   display: block;
   margin-top: 0;
-  margin-bottom: 0;
+  margin-bottom: 5px;
   margin-right: auto;
   margin-left: unquote('max(calc((100% - #{$content-width}) / 2), 10vw)');
   max-width: 1080px;
@@ -183,11 +183,14 @@
 
   @media screen and (min-width: $on-medium) {
     position: absolute;
-    top: unquote('calc(max(14.1vw, 160px) - 1.6rem)');
+    top: unquote('calc(max(14.1vw, 165px) - 1.6rem)');
     right: 0;
     margin-right: 0;
     padding-right: unquote('max(calc((100% - #{$content-width}) / 2), 10vw)');
     border-radius: 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
     border-bottom: 2px solid $border-color-02;
     background-color: rgba(darken($background-color, 5), 0.65);
     width: 100%;
@@ -297,7 +300,6 @@
  * Page content
  */
 .page-content {
-  margin-top: 36px;
   padding: $spacing-unit 0;
   flex: 1 0 auto;
 }
