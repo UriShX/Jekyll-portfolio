@@ -7,7 +7,7 @@
    * Set header size and background image
    */
   border-top: 5px solid $border-color-03;
-  border-bottom: 1px solid $border-color-01;
+  border-bottom: 1px solid $border-color-02;
   // min-height: $spacing-unit * 1.865;
   // line-height: $base-line-height * $base-font-size * 2.25;
 
@@ -179,10 +179,15 @@
   }
 
   @media screen and (min-width: $on-medium) {
-    position: static;
-    float: right;
-    border: none;
-    background-color: inherit;
+    position: absolute;
+    top: unquote('calc(max(14.1vw, 160px) - 1.6rem)');
+    right: 0;
+    margin-right: 0;
+    padding-right: unquote('max(calc((100% - #{$content-width}) / 2), 10vw)');
+    border-radius: 0;
+    border-bottom: 2px solid $border-color-02;
+    background-color: rgba(darken($background-color, 5), 0.65);
+    width: 100%;
 
     label[for='nav-trigger'] {
       display: none;
@@ -289,6 +294,7 @@
  * Page content
  */
 .page-content {
+  margin-top: 36px;
   padding: $spacing-unit 0;
   flex: 1 0 auto;
 }
