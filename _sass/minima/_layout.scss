@@ -181,6 +181,17 @@
     margin-left: 20px;
   }
 
+  .page-current {
+    padding: 0 20px;
+    color: $navlink-current-color;
+    display: inline-block;  /* For IE11/ MS Edge bug */
+    cursor: not-allowed;
+    opacity: 0.5;
+    pointer-events: none;
+    text-decoration: none;
+    font-style: oblique;
+  }
+
   @media screen and (min-width: $on-medium) {
     position: absolute;
     top: unquote('calc(max(14.1vw, 165px) - 1.6rem)');
@@ -209,12 +220,18 @@
 
     .page-link {
       display: inline;
-      padding: 0;
+      padding: 0 20px;
 
       &:not(:last-child) {
-        margin-right: 20px;
+        margin-right: 0;
       }
       margin-left: auto;
+
+      &:hover {
+        background-color: rgba(darken($background-color, 15), 0.65);
+        text-decoration: none;
+        color: $navlink-hover-color;
+      }
     }
   }
 }
@@ -604,7 +621,7 @@
         margin: 0px;
         padding: $spacing-unit / 2;
         font-size: $small-font-size;
-        white-space: pre-line;
+        // white-space: pre-line;
         text-align: justify;
         visibility: hidden;
       }

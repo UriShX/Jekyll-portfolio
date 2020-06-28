@@ -62,6 +62,8 @@ $code-background-color: $sol-mono2 !default;
 $link-base-color:       $sol-blue !default;
 $link-visited-color:    mix($sol-blue, $sol-mono00) !default;
 $link-hover-color:      $sol-mono00 !default;
+$navlink-current-color: $sol-violet;
+$navlink-hover-color:   $sol-orange;
 
 $border-color-01:       $brand-color-light !default;
 $border-color-02:       $sol-mono1 !default;
