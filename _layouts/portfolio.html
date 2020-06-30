@@ -1,6 +1,11 @@
 ---
 layout: default
 ---
+{% for singleCollection in site.collections %}
+    {% if  singleCollection.label == "portfolio" %}
+        {% assign portfolioDir = singleCollection.relative_directory %}
+    {% endif %}
+{% endfor %}
 
 <div class="portfolio">
     <header class="post-header">
@@ -11,6 +16,7 @@ layout: default
     </div>
     <div class="portfolio-wrapper">
         {% for project in site.portfolio %}
+            {% assign imageFolder = project.relative_path | replace: portfolioDir, '/assets/img' | replace: '.md', '/' %}
             {% assign projectIndex = forloop.index %}
             {% assign side = projectIndex | modulo:2 %}
             {% if side == 1 %}
@@ -19,13 +25,14 @@ layout: default
                 {% assign align-class="portfolio-r" %}
             {% endif %}
             <div class="portfolio-block {{ align-class }}" id="portfolio-block-{{ projectIndex }}">
-                <div class="portfolio-front" style="background-image: url('{{ project.cover }}');"></div>
+                <div class="portfolio-front" style="background-image: url('{% if project.cover %}{{ imageFolder }}{{ project.cover }}{% else %}/assets/logo.png{% endif %}');"></div>
                 <div class="portfolio-overlay"></div>
                 <div class="portfolio-excerpt">
                     {% if project.title %}
                         <h3>{{ project.title }}</h3>
                     {% endif %}
                     <p>
+                        {{ imageFolder }}
                         {% assign strippedContent = project.content | strip_html %}
                         {{ strippedContent | truncate: 512 }}
                     </p>
@@ -96,7 +103,7 @@ layout: default
                                 </div>
                                 <footer>
                                     <p>
-                                        {% if forloop.index == 1 %}
+                                        {% if forloop.first %}
                                             {% if strippedContent.size > 512 %}
                                                 <a href="#stackable-{{ projectIndex }}-front">Expand description</a>
                                             {% endif %}
@@ -142,11 +149,11 @@ layout: default
                             <footer>
                                 <ul aria-hidden="true" class="modal-content-list is-active">
                                     {% for j in project.modal %}
-                                        {% unless j.md and forloop.index == 1 %}
+                                        {% unless j.md and forloop.first %}
                                             <li data-caption="{{ j.text }}">
                                                 {% if j.img %}
                                                     <a href="#modal-gallery-{{ projectIndex }}/{{ forloop.index }}">
-                                                        <img alt="{{ j.text }}" data-src-fullsize="{{ j.img }}">
+                                                        <img alt="{{ j.text }}" data-src-fullsize="{{ imageFolder }}{{ j.img }}">
                                                     </a>
                                                 {% elsif j.md %}
                                                     <a href="#stackable-{{ projectIndex }}-{{ forloop.index }}">

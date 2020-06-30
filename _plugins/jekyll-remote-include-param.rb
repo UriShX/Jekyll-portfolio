@@ -11,7 +11,7 @@ module Jekyll
     end
 
     def open(url)
-      print(url + "\n")
+      # print(url + "\n")
       Net::HTTP.get(URI.parse(url.strip)).force_encoding 'utf-8'
     end
 
@@ -19,12 +19,12 @@ module Jekyll
       local_url = nil
       begin
         # some_code
-        print("try\n")
+        # print("try\n")
         URI.parse((@remote_include).strip)
         local_url = 1
       rescue
         # handle_error
-        print("catch\n")
+        # print("catch\n")
         URI.parse(context[@remote_include.strip].strip)
         local_url = 2
       ensure

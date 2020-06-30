@@ -14,7 +14,7 @@ collections:
   portfolio:
     sort_by: place
     order:
-      - perpetuum-mobile copy.md
+      - perpetuum-mobile.md
       - scale.md
 
 # Minima date format
