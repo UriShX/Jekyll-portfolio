@@ -63,17 +63,14 @@ layout: default
                             </header>
                             <div class="modal-content">
                                 {{ project.content }}
-                                <img alt="Project cover image" data-src-fullsize="{{ project.cover | absolute_url }}">
+                                <img alt="Project cover image" src="{{ project.cover | absolute_url }}">
                             </div>
                             <footer>
                                 <p>
                                     {% if project.modal %}
-                                        {% if project.modal[0].md %}
-                                            <a href="#stackable-{{ projectIndex }}-1">View attached documentation, etc.</a>
-                                        {% endif %}
-                                        {% if project.modal.size > 1 or project.modal[0].md != true %}
-                                            <a class="open-modal" href="#modal-gallery-{{ projectIndex }}" role="button" title="Open gallery modal">Open image gallery</a>
-                                        {% endif %}
+                                        <a data-close="Close" data-dismiss="modal" href="#!" title="Close this modal">Back</a>
+                                    {% else %}
+                                        <a data-close="Close" data-dismiss="modal" href="#!" title="Close this modal">Close</a>
                                     {% endif %}
                                 </p>
                             </footer>
@@ -99,10 +96,16 @@ layout: default
                                 </div>
                                 <footer>
                                     <p>
-                                        {% if strippedContent.size > 512 %}
-                                            <a href="#stackable-{{ projectIndex }}-front">Expand description</a>
+                                        {% if forloop.index == 1 %}
+                                            {% if strippedContent.size > 512 %}
+                                                <a href="#stackable-{{ projectIndex }}-front">Expand description</a>
+                                            {% endif %}
+                                            {% if project.modal.size > 1 %}
+                                                <a class="open-modal" href="#modal-gallery-{{ projectIndex }}" role="button" title="Open gallery modal">Open image gallery</a>
+                                            {% endif %}
+                                        {% else %}
+                                            <a data-close="Close" data-dismiss="modal" href="#!" title="Close this modal">Back</a>
                                         {% endif %}
-                                        <a class="open-modal" href="#modal-gallery-{{ projectIndex }}" role="button" title="Open gallery modal">Open image gallery</a>
                                     </p>
                                 </footer>
                             </div>
@@ -153,6 +156,13 @@ layout: default
                                             </li>
                                         {% endunless %}
                                     {% endfor %}
+                                    {% if strippedContent.size > 512 %}
+                                        <li data-caption="Expanded description">
+                                            <a href="#stackable-{{ projectIndex }}-front">
+                                                <img alt="Expand description" data-src-fullsize="/assets/img/twotone_description_black_48pt_3x.png">
+                                            </a>
+                                        </li>
+                                    {% endif %}
                                 </ul>
                             </footer>
                         </div>
