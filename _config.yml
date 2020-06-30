@@ -10,6 +10,8 @@ description: > # this means to ignore newlines until "show_excerpts:"
 
 show_excerpts: false # set to true to show excerpts on the homepage
 
+timezone: IL
+
 collections:
   portfolio:
     sort_by: place
