@@ -26,7 +26,8 @@ layout: default
                         <h3>{{ project.title }}</h3>
                     {% endif %}
                     <p>
-                        {{ project | strip_html | truncate: 512 }}
+                        {% assign strippedContent = project.content | strip_html %}
+                        {{ strippedContent | truncate: 512 }}
                     </p>
                 </div>
                 <div class="portflio-links">
@@ -45,9 +46,42 @@ layout: default
                                 <i class="material-icons">pageview</i>
                             </a>
                         {% endif %}
+                    {% elsif strippedContent.size > 512 %}
+                        <a href="#stackable-{{ projectIndex }}-front">
+                            <i class="material-icons">pageview</i>
+                        </a>
                     {% endif %}
                 </div>
 
+
+                {% if strippedContent.size > 512 %}
+                    <section aria-hidden="true" aria-labelledby="stackable-label" class="modal--show" id="stackable-{{ projectIndex }}-front" role="dialog" tabindex="-1">
+
+                        <div class="modal-inner">
+                            <header>
+                                <h2 id="stackable-label">{{ project.title | escape }}</h2>
+                            </header>
+                            <div class="modal-content">
+                                {{ project.content }}
+                                <img alt="Project cover image" data-src-fullsize="{{ project.cover | absolute_url }}">
+                            </div>
+                            <footer>
+                                <p>
+                                    {% if project.modal %}
+                                        {% if project.modal[0].md %}
+                                            <a href="#stackable-{{ projectIndex }}-1">View attached documentation, etc.</a>
+                                        {% endif %}
+                                        {% if project.modal.size > 1 or project.modal[0].md != true %}
+                                            <a class="open-modal" href="#modal-gallery-{{ projectIndex }}" role="button" title="Open gallery modal">Open image gallery</a>
+                                        {% endif %}
+                                    {% endif %}
+                                </p>
+                            </footer>
+                        </div>
+
+                        <a class="modal-close" data-close="Close" data-dismiss="modal" href="#!" title="Close this modal">&times;</a>
+                    </section>
+                {% endif %}
 
                 {% for i in project.modal %}
                     {% if i.md %}
@@ -65,7 +99,10 @@ layout: default
                                 </div>
                                 <footer>
                                     <p>
-                                        <a class="open-modal" href="#modal-gallery-{{ projectIndex }}" role="button" title="Open gallery modal">Open gallery modal</a>
+                                        {% if strippedContent.size > 512 %}
+                                            <a href="#stackable-{{ projectIndex }}-front">Expand description</a>
+                                        {% endif %}
+                                        <a class="open-modal" href="#modal-gallery-{{ projectIndex }}" role="button" title="Open gallery modal">Open image gallery</a>
                                     </p>
                                 </footer>
                             </div>
@@ -102,21 +139,19 @@ layout: default
                             <footer>
                                 <ul aria-hidden="true" class="modal-content-list is-active">
                                     {% for j in project.modal %}
-                                        <li data-caption="{{ j.text }}">
-                                            {% if j.img %}
-                                                <a href="#modal-gallery-{{ projectIndex }}/{{ forloop.index }}">
-                                                    <img alt="{{ j.text }}" data-src-fullsize="{{ j.img }}">
-                                                </a>
-                                            {% elsif j.md %}
-                                                <a href="#stackable-{{ projectIndex }}-{{ forloop.index }}">
-                                                    {% if j.text %}
-                                                        {{ j.text }}
-                                                    {% else %}
-                                                        {{ project.modal.size }}
-                                                    {% endif %}
-                                                </a>
-                                            {% endif %}
-                                        </li>
+                                        {% unless j.md and forloop.index == 1 %}
+                                            <li data-caption="{{ j.text }}">
+                                                {% if j.img %}
+                                                    <a href="#modal-gallery-{{ projectIndex }}/{{ forloop.index }}">
+                                                        <img alt="{{ j.text }}" data-src-fullsize="{{ j.img }}">
+                                                    </a>
+                                                {% elsif j.md %}
+                                                    <a href="#stackable-{{ projectIndex }}-{{ forloop.index }}">
+                                                        <img alt="{{ j.text }}" data-src-fullsize="/assets/img/twotone_description_black_48pt_3x.png">
+                                                    </a>
+                                                {% endif %}
+                                            </li>
+                                        {% endunless %}
                                     {% endfor %}
                                 </ul>
                             </footer>
