@@ -32,7 +32,6 @@ layout: default
                         <h3>{{ project.title }}</h3>
                     {% endif %}
                     <p>
-                        {{ imageFolder }}
                         {% assign strippedContent = project.content | strip_html %}
                         {{ strippedContent | truncate: 512 }}
                     </p>
@@ -70,7 +69,7 @@ layout: default
                             </header>
                             <div class="modal-content">
                                 {{ project.content }}
-                                <img alt="Project cover image" src="{{ project.cover | absolute_url }}">
+                                <img alt="Project cover image" src="{{ project.cover | prepend: imageFolder | absolute_url }}">
                             </div>
                             <footer>
                                 <p>
