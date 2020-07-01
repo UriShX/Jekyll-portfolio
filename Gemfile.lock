@@ -74,6 +74,7 @@ PLATFORMS
 
 DEPENDENCIES
   bundler
+  jekyll (~> 4.1)
   minima!
 
 BUNDLED WITH
