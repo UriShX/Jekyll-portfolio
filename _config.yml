@@ -4,13 +4,13 @@ logo: logo.png
 author:
   name: Uri Shani
   copyright-year: 2020
-  email:
+  email: urish@urishx.com
 description: > # this means to ignore newlines until "show_excerpts:"
-  A portfolio-first site with a blog, to feature my adventures and projects in 
+  A portfolio centered site with a blog, to feature my adventures and projects in 
   making, programming, and engineering. Built in Jekyll, to be served from Github pages.
 banner: banner.png
 
-show_excerpts: false # set to true to show excerpts on the homepage
+show_excerpts: true # set to true to show excerpts on the homepage
 
 timezone: IL
 
