@@ -1,8 +1,10 @@
 <div>
-    <header class="site-header">
+    <header class="site-header" style="background-image: url('/assets/img/{{ site.banner | escape }}');">
         <div class="banner">
             <div class="img-container">
-                <img alt="logo" src="/assets/logo.png"/>
+                {% if site.logo %}
+                    <img alt="logo" src="/assets/img/{{ site.logo }}"/>
+                {% endif %}
             </div>
             <h1 class="site-title">
                 <a rel="author" href="{{ '/' | relative_url }}">{{ site.title | escape }}</a>

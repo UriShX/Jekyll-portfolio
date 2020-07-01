@@ -18,7 +18,8 @@
   right: 50vw;
   margin-left: -50vw;
   margin-right: -50vw;
-  background-image: url('/assets/banner.png');
+  // background-image: url('/assets/banner.png');
+  background-color: $brand-color-light;
   background-size: cover;
   background-position: center;
   min-height: 14.1vw;
@@ -184,7 +185,7 @@
   .page-current {
     padding: 0 20px;
     color: $navlink-current-color;
-    display: inline-block;  /* For IE11/ MS Edge bug */
+    display: inline-block; /* For IE11/ MS Edge bug */
     cursor: not-allowed;
     opacity: 0.5;
     pointer-events: none;
@@ -490,7 +491,9 @@
 
     .portfolio-excerpt {
       width: 80vw !important;
-      height: unquote('calc(min(80vw, #{$local-max-block-size}) * 0.7) !important');
+      height: unquote(
+        'calc(min(80vw, #{$local-max-block-size}) * 0.7) !important'
+      );
     }
 
     .portflio-links {
@@ -536,7 +539,7 @@
         z-index: 2;
         opacity: 1;
       }
-      
+
       .portfolio-excerpt {
         transform: translateY($local-max-block-size);
         z-index: 3;
@@ -547,18 +550,21 @@
       }
 
       .portflio-links {
-        transform: unquote('translateY(calc( -1 * min(#{$local-block-size}, #{$local-max-block-size}) / 5))');
+        transform: unquote(
+          'translateY(calc( -1 * min(#{$local-block-size}, #{$local-max-block-size}) / 5))'
+        );
         z-index: 5;
       }
 
       @include media-query($on-palm) {
         .portflio-links {
-          transform: unquote('translateY(calc( -1 * min(80vw, #{$portfolio-max-block-size}) / 5)) !important') ;
+          transform: unquote(
+            'translateY(calc( -1 * min(80vw, #{$portfolio-max-block-size}) / 5)) !important'
+          );
         }
       }
     }
 
-    
     .portfolio-front {
       position: absolute;
       top: 0;
@@ -573,7 +579,7 @@
       @include easeLinks;
     }
 
-    .portfolio-overlay{
+    .portfolio-overlay {
       position: absolute;
       top: 0;
       left: 0;
@@ -593,7 +599,9 @@
       left: 0;
       width: $local-block-size;
       max-width: $local-max-block-size;
-      height: unquote('calc(min(#{$local-block-size}, #{$local-max-block-size}) * 0.7)');
+      height: unquote(
+        'calc(min(#{$local-block-size}, #{$local-max-block-size}) * 0.7)'
+      );
       // overflow: hidden;
       transform-origin: top;
       color: $sol-base03;
@@ -616,7 +624,7 @@
       }
 
       p {
-        // @include multiLineEllipsis($lineHeight: $small-font-size, $lineCount: 3, $bgColor: white);  
+        // @include multiLineEllipsis($lineHeight: $small-font-size, $lineCount: 3, $bgColor: white);
 
         margin: 0px;
         padding: $spacing-unit / 2;

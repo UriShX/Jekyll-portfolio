@@ -18,7 +18,7 @@ layout: default
     </div>
     <div class="portfolio-wrapper">
         {% for project in site.portfolio %}
-            {% assign imageFolder = project.relative_path | replace: portfolioDir, '/assets/img' | replace: '.md', '/' %}
+            {% assign imageFolder = project.relative_path | replace: portfolioDir, '/assets/img/portfolio' | replace: '.md', '/' %}
             {% assign projectIndex = forloop.index %}
             {% assign side = projectIndex | modulo:2 %}
             {% if side == 1 %}
@@ -27,7 +27,7 @@ layout: default
                 {% assign align-class="portfolio-r" %}
             {% endif %}
             <div class="portfolio-block {{ align-class }}" id="portfolio-block-{{ projectIndex }}">
-                <div class="portfolio-front" style="background-image: url('{% if project.cover %}{{ imageFolder }}{{ project.cover }}{% else %}/assets/logo.png{% endif %}');"></div>
+                <div class="portfolio-front" style="background-image: url('{% if project.cover %}{{ imageFolder }}{{ project.cover }}{% else %}/assets/img/logo.png{% endif %}');"></div>
                 <div class="portfolio-overlay"></div>
                 <div class="portfolio-excerpt">
                     {% if project.title %}
@@ -158,7 +158,7 @@ layout: default
                                                     </a>
                                                 {% elsif j.md %}
                                                     <a href="#stackable-{{ projectIndex }}-{{ forloop.index }}">
-                                                        <img alt="{{ j.text }}" data-src-fullsize="/assets/img/twotone_description_black_48pt_3x.png">
+                                                        <img alt="{{ j.text }}" data-src-fullsize="/assets/img/portfolio/twotone_description_black_48pt_3x.png">
                                                     </a>
                                                 {% endif %}
                                             </li>
@@ -167,7 +167,7 @@ layout: default
                                     {% if strippedContent.size > 512 %}
                                         <li data-caption="Expanded description">
                                             <a href="#stackable-{{ projectIndex }}-front">
-                                                <img alt="Expand description" data-src-fullsize="/assets/img/twotone_description_black_48pt_3x.png">
+                                                <img alt="Expand description" data-src-fullsize="/assets/img/portfolio/twotone_description_black_48pt_3x.png">
                                             </a>
                                         </li>
                                     {% endif %}
