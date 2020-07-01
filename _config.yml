@@ -2,12 +2,12 @@ title: Uri Sh.
 subtitle: Making and Engineering
 logo: logo.png
 author:
-  name: GitHub User
-  email: your-email@domain.com
+  name: Uri Shani
+  copyright-year: 2020
+  email:
 description: > # this means to ignore newlines until "show_excerpts:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  A portfolio-first site with a blog, to feature my adventures and projects in 
+  making, programming, and engineering. Built in Jekyll, to be served from Github pages.
 banner: banner.png
 
 show_excerpts: false # set to true to show excerpts on the homepage
@@ -44,11 +44,11 @@ minima:
   # generate social links in footer
   social_links:
     hackaday: UriSh
-    twitter: jekyllrb
-    github: jekyll
+    twitter: UriShX
+    github: UriShX
     # devto: jekyll
     # dribbble: jekyll
-    # facebook: jekyll
+    facebook: uri.sh.982
     # flickr:   jekyll
     # instagram: jekyll
     # linkedin: jekyll

@@ -367,6 +367,29 @@
   }
 }
 
+.post-block-image {
+  display: block;
+  margin-top: 2rem;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 0;
+  width: 40%;
+
+  @media screen and (max-width: $on-palm) {
+    width: 80%;
+  }
+}
+
+.post-image-desc {
+  display: block;
+  margin-top: 0;
+  padding-top: 0;
+  text-align: center;
+  font-weight: bold;
+  color: lighten($text-color, 15);
+}
+
 .post-content {
   margin-bottom: $spacing-unit;
 
