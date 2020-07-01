@@ -5,6 +5,6 @@ gemspec
 
 gem "jekyll", '~> 4.1'
 
-group :jekyll_plugins do
-    gem 'jekyll-remote-include-param'
-end
+# group :jekyll_plugins do
+#     gem 'jekyll-remote-include-param'
+# end
