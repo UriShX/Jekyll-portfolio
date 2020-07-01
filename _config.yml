@@ -29,6 +29,7 @@ minima:
 
   # generate social links in footer
   social_links:
+    hackaday: UriSh
     twitter: jekyllrb
     github: jekyll
     # devto: jekyll
