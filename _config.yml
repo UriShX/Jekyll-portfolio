@@ -19,7 +19,21 @@ collections:
     sort_by: place
     order:
       - perpetuum-mobile.md
-      - scale.md
+      - niti-light.md
+      - uav-fuel-tank.md
+      - toy-sound-box-prototype.md
+      - mechanical-sieve.md
+      - fuel-gun.md
+      - smart-scale.md
+      - concrete-pot.md
+      - elastomeric-part-design.md
+      - aerial-warning-ball.md
+      - ziv-foot-rest.md
+      - parametric-design-openscad.md
+      - web-ble-basic-control.md
+      - ab4mc.md
+      - cap-sense-name-card.md
+      - sus-comp-agriwaste.md
 
 # Minima date format
 # refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this
