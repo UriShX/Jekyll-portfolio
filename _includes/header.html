@@ -1,9 +1,9 @@
 <div>
-    <header class="site-header" style="background-image: url('{{ "/assets/img/{{ site.banner | escape }}" | relative_url  }}');">
+    <header class="site-header" style="background-image: url('{{ site.banner | escape | prepend: "/assets/img/" | relative_url  }}');">
         <div class="banner">
             <div class="img-container">
                 {% if site.logo %}
-                    <img alt="logo" src="{{ '/assets/img/{{ site.logo }}' | relative_url }}"/>
+                    <img alt="logo" src="{{ {{ site.logo }} | escape | prepend: '/assets/img/' | relative_url }}"/>
                 {% endif %}
             </div>
             <h1 class="site-title">

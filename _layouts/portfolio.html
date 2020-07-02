@@ -71,7 +71,7 @@ layout: default
                             </header>
                             <div class="modal-content">
                                 {{ project.content }}
-                                <img alt="Project cover image" src="{{ project.cover | prepend: imageFolder | absolute_url }}">
+                                <img alt="Project cover image" src="{{ project.cover | prepend: imageFolder | relative_url }}">
                             </div>
                             <footer>
                                 <p>
