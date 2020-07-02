@@ -27,7 +27,7 @@ layout: default
                 {% assign align-class="portfolio-r" %}
             {% endif %}
             <div class="portfolio-block {{ align-class }}" id="portfolio-block-{{ projectIndex }}">
-                <div class="portfolio-front" style="background-image: url('{% if project.cover %}{{ imageFolder }}{{ project.cover }}{% else %}/assets/img/logo.png{% endif %}');"></div>
+                <div class="portfolio-front" style="background-image: url('{% if project.cover %}{{ project.cover | prepend: imageFolder | relative_url }}{% else %}{{ "/assets/img/logo.png" | relative_url }}{% endif %}');"></div>
                 <div class="portfolio-overlay"></div>
                 <div class="portfolio-excerpt">
                     {% if project.title %}
