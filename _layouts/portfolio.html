@@ -154,11 +154,11 @@ layout: default
                                             <li data-caption="{{ j.text }}">
                                                 {% if j.img %}
                                                     <a href="#modal-gallery-{{ projectIndex }}/{{ forloop.index }}">
-                                                        <img alt="{{ j.text }}" data-src-fullsize="{{ imageFolder }}{{ j.img }}">
+                                                        <img alt="{{ j.text }}" data-src-fullsize="{{ j.img | prepend: imageFolder | relative_url }}">
                                                     </a>
                                                 {% elsif j.md %}
                                                     <a href="#stackable-{{ projectIndex }}-{{ forloop.index }}">
-                                                        <img alt="{{ j.text }}" data-src-fullsize="/assets/img/portfolio/twotone_description_black_48pt_3x.png">
+                                                        <img alt="{{ j.text }}" data-src-fullsize="{{ "/assets/img/portfolio/twotone_description_black_48pt_3x.png" | relative_url }}">
                                                     </a>
                                                 {% endif %}
                                             </li>
@@ -167,7 +167,7 @@ layout: default
                                     {% if strippedContent.size > 512 %}
                                         <li data-caption="Expanded description">
                                             <a href="#stackable-{{ projectIndex }}-front">
-                                                <img alt="Expand description" data-src-fullsize="/assets/img/portfolio/twotone_description_black_48pt_3x.png">
+                                                <img alt="Expand description" data-src-fullsize="{{ "/assets/img/portfolio/twotone_description_black_48pt_3x.png" | relative_url }}">
                                             </a>
                                         </li>
                                     {% endif %}
