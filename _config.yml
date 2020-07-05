@@ -9,7 +9,7 @@ description: > # this means to ignore newlines until "show_excerpts:"
   A portfolio centered site with a blog, to feature my adventures and projects in 
   making, programming, and engineering. Built in Jekyll, to be served from Github pages.
 banner: banner.png
-baseurl: 'Jekyll-portfolio' # the subpath of your site, e.g. /blog
+baseurl: '/Jekyll-portfolio' # the subpath of your site, e.g. /blog
 url: 'https://UriShX.github.io' # the base hostname & protocol for your site, e.g. http://example.com
 
 show_excerpts: true # set to true to show excerpts on the homepage

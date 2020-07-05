@@ -543,6 +543,13 @@
     }
   }
 
+  .portfolio-hidden {
+    display: none;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+
   .portfolio-block {
     position: relative;
     overflow: hidden;
