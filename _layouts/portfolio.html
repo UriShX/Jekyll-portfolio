@@ -9,13 +9,6 @@ layout: default
 
 {% assign portfolioTags =  site.portfolio | map: 'tags' | join: ','  | split: ',' | uniq %}
 
-<div class="portfolio-tags">
-<a href="#">All</a>
-{% for tag in portfolioTags %}
-    <a href="#{{ tag }}">{{ tag }}</a>
-{% endfor %}
-</div>
-
 <div class="portfolio">
     <header class="post-header">
         <h1 class="post-title">{{ page.title | escape }}</h1>
@@ -23,6 +16,14 @@ layout: default
     <div class="post-content">
         {{ content }}
     </div>
+
+    <div class="portfolio-tags">
+        <a href="#">All</a>
+        {% for tag in portfolioTags %}
+            <a href="#{{ tag }}">{{ tag }}</a>
+        {% endfor %}
+    </div>
+    
     <div class="portfolio-wrapper">
         {% for project in site.portfolio %}
             {% assign imageFolder = project.relative_path | replace: portfolioDir, '/assets/img/portfolio' | replace: '.md', '/' %}

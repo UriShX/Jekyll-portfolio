@@ -9,8 +9,16 @@ for (let ref of portfolioTagsNodelist) {
   portfolioTags.push(href.split('#')[1])
 }
 
-window.addEventListener('hashchange', () => {
-  const locHashId = window.location.hash.split('#')[1]
+const evListFunct = function () {
+  const currHash = window.location.hash
+  const locHashId = currHash.split('#')[1]
+  Array.prototype.forEach.call(portfolioTagsNodelist, function (a) {
+    const href = a.getAttribute('href')
+    if (href === currHash) a.classList.add('filter-current')
+    else if (a.classList.contains('filter-current'))
+      a.classList.remove('filter-current')
+  })
+
   if (typeof locHashId === 'undefined') {
     // console.log('All')
     sortPortfolioBlocksLeftRight(allProjects)
@@ -29,7 +37,7 @@ window.addEventListener('hashchange', () => {
 
     sortPortfolioBlocksLeftRight(projectsWithLocId)
   }
-})
+}
 
 function unHidePotfolioBlocks() {
   for (const p of allProjects) {
@@ -66,3 +74,7 @@ let projectFilter = (foundProjects) => {
   // console.log(filteredProjects)
   return filteredProjects
 }
+
+window.addEventListener('DOMContentLoaded', evListFunct, true)
+window.removeEventListener('DOMContentLoaded', evListFunct)
+window.addEventListener('hashchange', evListFunct)
