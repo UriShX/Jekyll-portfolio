@@ -1,3 +1,7 @@
+# Minima-portfolio
+I needed a portfolio page that to display both text / code projects, and projects with a bit more visual content. Starting with the minima theme, I created a layout that grabs the files in a collection called `portfolio`, and displays the projects in the `_portfolio` folder in a grid layout, which opens modals with the content for each project as described in the project's markdown front-matter. \
+Other modifications are the addition of a site logo which is displayed in the header as well as in projects which do not have any graphical content, a header background banner, and the addition of the [hackaday logo](https://hackaday.io/project/165314-hackaday-social-media-icon) to the social links which are displayed in the footer.
+
 # minima
 
 *Minima is a one-size-fits-all Jekyll theme for writers*. It's Jekyll's default (and first) theme. It's what you get when you run `jekyll new`.

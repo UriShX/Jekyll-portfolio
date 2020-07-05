@@ -354,6 +354,16 @@ table td { border: 1px solid #93a1a1; }
 @media screen and (min-width: 800px) { .one-half { width: calc(50% - (30px / 2)); } }
 
 /** Portfolio */
+.portfolio-tags { text-align: center; margin-top: auto; margin-bottom: 5vh; }
+
+@media screen and (min-width: 800px) { .portfolio-tags { margin-left: 5vw; margin-right: 5vw; } }
+
+.portfolio-tags a { display: inline-block; margin: 2px; padding: 0.2rem 0.4rem; border-radius: 2px; -webkit-transition: 0.1s; transition: 0.1s; text-decoration: none; border-style: solid; border-width: thin; border-radius: 4px; border-color: #268bd2; }
+
+.portfolio-tags a:hover { color: #cb4b16; }
+
+.portfolio-tags .filter-current { cursor: not-allowed; opacity: 0.5; color: #6c71c4; pointer-events: none; text-decoration: none; font-style: oblique; }
+
 .portfolio-wrapper { display: grid; max-width: calc(800px - (30px)); grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; gap: 10px; }
 
 @media screen and (max-width: 600px) { .portfolio-wrapper { width: 90vw; grid-template-columns: 1fr; grid-template-rows: auto; } .portfolio-wrapper .portfolio-overlay, .portfolio-wrapper .portfolio-content, .portfolio-wrapper .portfolio-block, .portfolio-wrapper .portfolio-front { width: 80vw !important; height: 80vw !important; } .portfolio-wrapper .portfolio-excerpt { width: 80vw !important; height: calc(min(80vw, 380px) * 0.7) !important; } .portfolio-wrapper .portflio-links { top: min(80vw, 380px) !important; } .portfolio-wrapper .portflio-links i { font-size: 28px !important; } }
@@ -363,6 +373,8 @@ table td { border: 1px solid #93a1a1; }
 .portfolio-wrapper .portfolio-r { justify-self: start; }
 
 @media screen and (max-width: 600px) { .portfolio-wrapper .portfolio-l, .portfolio-wrapper .portfolio-r { justify-self: center; } }
+
+.portfolio-wrapper .portfolio-hidden { display: none; visibility: hidden; width: 0; height: 0; }
 
 .portfolio-wrapper .portfolio-block { position: relative; overflow: hidden; background-color: #002b36; width: calc(100vw / 2 - 10px * 2); height: calc(100vw / 2 - 10px * 2); max-width: 380px; max-height: 380px; }
 
