@@ -18,7 +18,7 @@ layout: default
     </div>
 
     <div class="portfolio-tags">
-        <a href="#">All</a>
+        <a href="#portfolio-all-tags">All</a>
         {% for tag in portfolioTags %}
             <a href="#{{ tag }}">{{ tag }}</a>
         {% endfor %}
@@ -53,7 +53,7 @@ layout: default
                         </a>
                     {% endif %}
                     {% if project.modal %}
-                        {% if project.modal[0].md %}
+                        {% if project.modal[0].md or project.modal[0].code %}
                             <a href="#stackable-{{ projectIndex }}-1">
                                 <i class="material-icons">pageview</i>
                             </a>
@@ -97,7 +97,7 @@ layout: default
                 {% endif %}
 
                 {% for i in project.modal %}
-                    {% if i.md %}
+                    {% if i.md or i.code %}
                         <section aria-hidden="true" aria-labelledby="stackable-label" class="modal--show" id="stackable-{{ projectIndex }}-{{ forloop.index }}" role="dialog" tabindex="-1">
 
                             <div class="modal-inner">
@@ -105,10 +105,19 @@ layout: default
                                     <h2 id="stackable-label">Stacked modal</h2>
                                 </header>
                                 <div class="modal-content">
-                                    {% capture mdurl %}
-                                        {% remote_include_param {{ i.md }} %}
-                                    {% endcapture %}
-                                    {{ mdurl | strip | markdownify }}
+                                    {% if i.md %}
+                                        {% capture mdurl %}
+                                            {% remote_include_param {{ i.md }} %}
+                                        {% endcapture %}
+                                        {{ mdurl | strip | markdownify }}
+                                    {% else %}
+                                        {% capture codeurl %}
+                                            {% remote_include_param {{ i.code }} %}
+                                        {% endcapture %}
+                                        {% highlight_param i.lang %}
+                                            {{ codeurl | strip }}
+                                        {% endhighlight_param %}
+                                    {% endif %}
                                 </div>
                                 <footer>
                                     <p>
@@ -130,8 +139,13 @@ layout: default
                         </section>
                     {% endif %}
                 {% endfor %}
-
-                {% unless project.modal[0].md and project.modal.size == 1 %}
+                
+                {% if project.modal[0].md or project.modal[0].code %}
+                    {% assign modaltest = true %}
+                {% else %}
+                    {% assign modaltest = false %}
+                {% endif %}
+                {% unless project.modal.size == 1 and modaltest %}
                     <section aria-hidden="true" aria-labelledby="modal-label" class="portfolio-modal modal--gallery" data-cssmodal-resize="true" id="modal-gallery-{{ projectIndex }}" role="dialog" tabindex="-1">
                         <div class="modal-inner">
                             <div class="modal-content">
