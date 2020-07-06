@@ -1,4 +1,5 @@
 const allProjects = document.querySelectorAll('.portfolio-block')
+const portfolioCloseNodes = document.querySelectorAll('.js-modal-close')
 const portfolioTagsNodelist = document
   .querySelector('.portfolio-tags')
   .querySelectorAll('a')
@@ -12,18 +13,26 @@ for (let ref of portfolioTagsNodelist) {
 const evListFunct = function () {
   const currHash = window.location.hash
   const locHashId = currHash.split('#')[1]
+
   Array.prototype.forEach.call(portfolioTagsNodelist, function (a) {
     const href = a.getAttribute('href')
-    if (href === currHash) a.classList.add('filter-current')
+    if (href === currHash && href !== '#portfolio-all-tags')
+      a.classList.add('filter-current')
     else if (a.classList.contains('filter-current'))
       a.classList.remove('filter-current')
   })
 
-  if (typeof locHashId === 'undefined') {
+  if (locHashId === 'portfolio-all-tags') {
+    Array.prototype.forEach.call(portfolioCloseNodes, function (a) {
+      const href = a.setAttribute('href', currHash)
+    })
     // console.log('All')
     sortPortfolioBlocksLeftRight(allProjects)
     unHidePotfolioBlocks()
   } else if (portfolioTags.indexOf(locHashId) > 0) {
+    Array.prototype.forEach.call(portfolioCloseNodes, function (a) {
+      const href = a.setAttribute('href', currHash)
+    })
     // console.log(locHashId)
     const projectsWithLocId = document.querySelectorAll('.' + locHashId)
     const projectSToHide = projectFilter(projectsWithLocId)

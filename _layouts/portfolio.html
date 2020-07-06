@@ -84,15 +84,15 @@ layout: default
                             <footer>
                                 <p>
                                     {% if project.modal %}
-                                        <a data-close="Close" data-dismiss="modal" href="#!" title="Close this modal">Back</a>
+                                        <a class="js-modal-close" data-close="Close" data-dismiss="modal" href="#!" title="Close this modal">Back</a>
                                     {% else %}
-                                        <a data-close="Close" data-dismiss="modal" href="#!" title="Close this modal">Close</a>
+                                        <a class="js-modal-close" data-close="Close" data-dismiss="modal" href="#!" title="Close this modal">Close</a>
                                     {% endif %}
                                 </p>
                             </footer>
                         </div>
 
-                        <a class="modal-close" data-close="Close" data-dismiss="modal" href="#!" title="Close this modal">&times;</a>
+                        <a class="modal-close js-modal-close" data-close="Close" data-dismiss="modal" href="#!" title="Close this modal">&times;</a>
                     </section>
                 {% endif %}
 
@@ -129,13 +129,13 @@ layout: default
                                                 <a class="open-modal" href="#modal-gallery-{{ projectIndex }}" role="button" title="Open gallery modal">Open image gallery</a>
                                             {% endif %}
                                         {% else %}
-                                            <a data-close="Close" data-dismiss="modal" href="#!" title="Close this modal">Back</a>
+                                            <a class="js-modal-close" data-close="Close" data-dismiss="modal" href="#!" title="Close this modal">Back</a>
                                         {% endif %}
                                     </p>
                                 </footer>
                             </div>
 
-                            <a class="modal-close" data-close="Close" data-dismiss="modal" href="#!" title="Close this modal">&times;</a>
+                            <a class="modal-close js-modal-close" data-close="Close" data-dismiss="modal" href="#!" title="Close this modal">&times;</a>
                         </section>
                     {% endif %}
                 {% endfor %}
@@ -197,7 +197,7 @@ layout: default
                             </footer>
                         </div>
 
-                        <a class="modal-close" data-close="Close" data-dismiss="modal" href="#!" title="Close this modal">?</a>
+                        <a class="modal-close js-modal-close" data-close="Close" data-dismiss="modal" href="#!" title="Close this modal">?</a>
                     </section>
                 {% endunless %}
             </div>
