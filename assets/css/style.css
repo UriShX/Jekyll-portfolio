@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url("zenburn.css");
 .highlight .c { color: #93a1a1; font-style: italic; }
 
 .highlight .err { color: #dc322f; }
