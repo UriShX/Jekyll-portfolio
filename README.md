@@ -13,7 +13,8 @@ The theme is based on [Minima](https://github.com/jekyll/minima), with slightly 
 
 Refers to files within the `_layouts` directory, that define the markup for your theme.
 
-  - `portfolio.html` &mdash; The layout for your portfolio. Builds your portfolio based on a collection stored in `_portfolio`.
+  - `portfolio.html` &mdash; The layout for your portfolio. Builds your portfolio based on a collection stored in `_portfolio`. \
+  This file will only render if a `.md` page with `layout: portfolio` in it's front matter is present
 
 
 ### Portfolio

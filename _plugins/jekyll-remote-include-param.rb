@@ -19,21 +19,13 @@ module Jekyll
       local_url = nil
       begin
         # some_code
-        # print("try\n")
+        print("try\n")
         URI.parse((@remote_include).strip)
-        local_url = 1
+        open("#{@remote_include}")
       rescue
         # handle_error
-        # print("catch\n")
+        print("catch\n")
         URI.parse(context[@remote_include.strip].strip)
-        local_url = 2
-      ensure
-        # this_code_is_always_executed
-      end
-
-      if local_url == 1
-        open("#{@remote_include}")
-      elsif local_url == 2
         open("#{context[@remote_include.strip]}")
       end
     end
