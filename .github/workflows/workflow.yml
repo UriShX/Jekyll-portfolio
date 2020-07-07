@@ -65,7 +65,7 @@ jobs:
         with:
           personal_token: ${{ secrets.PERSONAL_TOKEN }}
           # deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          external_repository: UriShX/urishx.github.com
+          external_repository: UriShX/urishx.github.io
           publish_branch: master
           publish_dir: ./_site
           # github_token: ${{ secrets.GITHUB_TOKEN }}
