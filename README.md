@@ -1,92 +1,50 @@
-# Minima-portfolio
-I needed a portfolio page that to display both text / code projects, and projects with a bit more visual content. Starting with the minima theme, I created a layout that grabs the files in a collection called `portfolio`, and displays the projects in the `_portfolio` folder in a grid layout, which opens modals with the content for each project as described in the project's markdown front-matter. \
-Other modifications are the addition of a site logo which is displayed in the header as well as in projects which do not have any graphical content, a header background banner, and the addition of the [hackaday logo](https://hackaday.io/project/165314-hackaday-social-media-icon) to the social links which are displayed in the footer.
+# Jekyll-portfolio
+A Jekyll template based on the [Minima](https://github.com/jekyll/minima) theme, with the addition of a portfolio template.
 
-# minima
-
-*Minima is a one-size-fits-all Jekyll theme for writers*. It's Jekyll's default (and first) theme. It's what you get when you run `jekyll new`.
-
-***Disclaimer:** The information here may vary depending on the version you're using. Please refer to the `README.md` bundled
-within the theme-gem for information specific to your version or by pointing your browser to the Git tag corresponding to your
-version. e.g. https://github.com/jekyll/minima/blob/v2.5.0/README.md*  
-*Running `bundle show minima` will provide you with the local path to your current theme version.*
-
-
-[Theme preview](https://jekyll.github.io/minima/)
-
-![minima theme preview](/screenshot.png)
-
-## Installation
-
-Add this line to your Jekyll site's Gemfile:
-
-```ruby
-gem "minima"
-```
-
-And then execute:
-
-    $ bundle
-
+Deployment to github pages is done through Githu action, see below.
 
 ## Contents At-A-Glance
 
-Minima has been scaffolded by the `jekyll new-theme` command and therefore has all the necessary files and directories to have a new Jekyll site up and running with zero-configuration.
+The theme is based on [Minima](https://github.com/jekyll/minima), with slightly modified site branding, and an addition of a `portfolio` layout.
+
+*For all other files and configuration options not described here, please refer to the [Minima](https://github.com/jekyll/minima) documentation*
 
 ### Layouts
 
 Refers to files within the `_layouts` directory, that define the markup for your theme.
 
-  - `default.html` &mdash; The base layout that lays the foundation for subsequent layouts. The derived layouts inject their contents into this file at the line that says ` {{ content }} ` and are linked to this file via [FrontMatter](https://jekyllrb.com/docs/frontmatter/) declaration `layout: default`.
-  - `home.html` &mdash; The layout for your landing-page / home-page / index-page. [[More Info.](#home-layout)]
-  - `page.html` &mdash; The layout for your documents that contain FrontMatter, but are not posts.
-  - `post.html` &mdash; The layout for your posts.
-
-#### Home Layout
-
-`home.html` is a flexible HTML layout for the site's landing-page / home-page / index-page. <br/>
-
-##### *Main Heading and Content-injection*
-
-From Minima v2.2 onwards, the *home* layout will inject all content from your `index.md` / `index.html` **before** the **`Posts`** heading. This will allow you to include non-posts related content to be published on the landing page under a dedicated heading. *We recommended that you title this section with a Heading2 (`##`)*.
-
-Usually the `site.title` itself would suffice as the implicit 'main-title' for a landing-page. But, if your landing-page would like a heading to be explicitly displayed, then simply define a `title` variable in the document's front matter and it will be rendered with an `<h1>` tag.
-
-##### *Post Listing*
-
-This section is optional from Minima v2.2 onwards.<br/>
-It will be automatically included only when your site contains one or more valid posts or drafts (if the site is configured to `show_drafts`).
-
-The title for this section is `Posts` by default and rendered with an `<h2>` tag. You can customize this heading by defining a `list_title` variable in the document's front matter.
+  - `portfolio.html` &mdash; The layout for your portfolio. Builds your portfolio based on a collection stored in `_portfolio`.
 
 
-### Includes
+### Portfolio
+Refers to files within the `_portfolio` directory, which contain the Markdown files that define each portfolio project, and contain the brief description of the project to be displayed in `mouseover` events.
 
-Refers to snippets of code within the `_includes` directory that can be inserted in multiple layouts (and another include-file as well) within the same theme-gem.
+Each file in the directory can contain the following front matter:
+```yaml
+place: # Integer, optional. See collection definition in _config.yml.
+cover: coverimg.jpg # Optional but highly desirable. See assets/img/portfolio, below.
+title: "A short title" # Will display in the short description of the project.
+tags: tag1 tag2 # Tags for filtering relevant projects by buttons in the portfolio.html layout.
+link: https://github.com/UriShX/Jekyll-portfolio # Optional, if the project can be linked to a blog post, etc.
+modal:
+  - code: https://raw.githubusercontent.com/githubuser/portfolio/master/some-arduino-script.ino
+    lang: cpp # Required if code key is in use
+  - md: https://raw.githubusercontent.com/githubuser/portfolio/master/README.md
+  - img: project_image1.png # See assets/img/portfolio, below.
+  - img: project_image2.gif # See assets/img/portfolio, below.
+  - img: coverimg.jpg # See assets/img/portfolio, below.
+```
 
-  - `disqus_comments.html` &mdash; Code to markup disqus comment box.
-  - `footer.html` &mdash; Defines the site's footer section.
-  - `google-analytics.html` &mdash; Inserts Google Analytics module (active only in production environment).
-  - `head.html` &mdash; Code-block that defines the `<head></head>` in *default* layout.
-  - `custom-head.html` &mdash; Placeholder to allow users to add more metadata to `<head />`.
-  - `header.html` &mdash; Defines the site's main header section. By default, pages with a defined `title` attribute will have links displayed here.
-  - `social.html` &mdash; Renders social-media icons based on the `minima:social_links` data in the config file.
+The `modal` key elements' order defines the default behaviour of the gallery modal windows. If the first element is either a `md` or a `code` link, the first modal will display the parsed content of this file, and will display a link to a lightbox gallery. If the first element is `img`, the first modal to display for each project will be a lightbox, and if one of the `modal` sub-keys is either `md` or `code` they will be displayed as a placeholder image link, which when pressed will lead to the modal containing the parsed code or markdown.
 
+*The front matter does not have to contain any subkeys in the `modal` key to disaply the project with a brief description and a cover image*
 
 ### Sass
 
 Refers to `.scss` files within the `_sass` directory that define the theme's styles.
 
-  - `minima/skins/classic.scss` &mdash; The "classic" skin of the theme. *Used by default.*
-  - `minima/initialize.scss` &mdash; A component that defines the theme's *skin-agnostic* variable defaults and sass partials.
-    It imports the following components (in the following order):
-    - `minima/custom-variables.scss` &mdash; A hook that allows overriding variable defaults and mixins. (*Note: Cannot override styles*)
-    - `minima/_base.scss` &mdash; Sass partial for resets and defines base styles for various HTML elements.
-    - `minima/_layout.scss` &mdash; Sass partial that defines the visual style for various layouts.
-    - `minima/custom-styles.scss` &mdash; A hook that allows overriding styles defined above. (*Note: Cannot override variables*)
-
-Refer the [skins](#skins) section for more details.
-
+  - `drublic-css-modal/` &mdash; This library contains the CSS based modal files. See documentation at [css-modal](https://drublic.github.io/css-modal/).
+  
 
 ### Assets
 
@@ -94,146 +52,68 @@ Refers to various asset files within the `assets` directory.
 
   - `assets/css/style.scss` &mdash; Imports sass files from within the `_sass` directory and gets processed into the theme's
     stylesheet: `assets/css/styles.css`.
+  - `assets/css/zenburn.css` &mdash; Pygments / Rouge code highlighting. From [jekyll-pygments-themes](https://jwarby.github.io/jekyll-pygments-themes/languages/ruby.html).
+  - `assets/img/banner.png` &mdash; Site branding banner. Configure in `_config.yml`.
+  - `assets/img/logo.png` &mdash; Site branding logo. Used as placeholder cover image for portfolio projects which do not specify a cover image in their front matter. Configure in `_config.yml`.
+  - `assets/img/portfolio/` &mdash; Parent folder for portfolio projects' images. Each project should have it's own subfolder, eg.:  \
+  &#9500;` _portfolio/` \
+  &#9474;&ensp;&#9500;` project1.md` \
+  &#9474;&ensp;&#9492;` project2.md` \
+  &#9500;` _assets/` \
+  &#9474;&ensp;&#9492;` img/` \
+  &#9474;&emsp;&#9492;` portfolio/` \
+  &#9474;&ensp;&emsp;&#9500;` project1/` \
+  &#9474;&emsp;&ensp;&#9474;&nbsp;&#9500;` image1.gif` \
+  &#9474;&emsp;&ensp;&#9474;&nbsp;&#9492;` image2.gif` \
+  &#9474;&ensp;&emsp;&#9492;` project2/` \
+  &#9474;&emsp;&emsp;&ensp;&#9492;` image1.gif` \
+  - `assets/img/portfolio/twotone_description_black_48pt_3x.png` &mdash; Placeholder image for modal galleries which contain both code or markdown files as well as images.
+  - `assets/script/modal*` &mdash; Files used by `css-modal`, for use in portfolio projects.
+  - `assets/scripts/portfolio-tag-filter.js` &mdash; Used in `portfolio.html`. Filters portfolio projects according to selected tag (button), and changes the close `<a>` tag `href` to the selcted tag.
   - `assets/minima-social-icons.svg` &mdash; A composite SVG file comprised of *symbols* related to various social-media icons.
     This file is used as-is without any processing. Refer [section on social networks](#social-networks) for its usage.
+    *Added the [Hackaday logo](https://hackaday.io/project/165314-hackaday-social-media-icon).*
 
 
 ### Plugins
 
-Minima comes with [`jekyll-seo-tag`](https://github.com/jekyll/jekyll-seo-tag) plugin preinstalled to make sure your website gets the most useful meta tags. See [usage](https://github.com/jekyll/jekyll-seo-tag#usage) to know how to set it up.
+ - Minima comes with [`jekyll-seo-tag`](https://github.com/jekyll/jekyll-seo-tag) plugin preinstalled to make sure your website gets the most useful meta tags. See [usage](https://github.com/jekyll/jekyll-seo-tag#usage) to know how to set it up.
 
+  - `_plugins/jekyll-remote-include-param.rb` &mdash; Based on [netrics/jekyll-remote-include](https://github.com/netrics/jekyll-remote-include). I've added the possibilty to allow passing the `link` parameter to the Liquid tag, in order to get the link from a portfolio project's front matter.
+  - `_plugins/jekyll-rouge-param.rb` &mdash; Based on Jekyll's [highlight](https://jekyllrb.com/docs/liquid/tags/#code-snippet-highlighting) Liquid tag to allow passing the `language` parameter from a portfolio project's front matter. \
+  [Jekyll's original code](https://github.com/jekyll/jekyll/blob/master/lib/jekyll/tags/highlight.rb) finds the relevant language in its lexers in its `def render_rouge(code)` function, where in my modified plugin a test is done in the `def render(context)` function, thus allowing for testing the `@lang` variable in `context`.
+
+### Deploy to github
+Since the site uses plugins and a custom template, I used a Github action by [limjh16/jekyll-action-ts](https://github.com/limjh16/jekyll-action-ts) to publish the site too github pages. Since this action uses [peaceiris/actions-gh-pages](https://github.com/peaceiris/actions-gh-pages) in it's workflow, I was able to publish the site to my github user site, instead of the project folder.
+
+The file that calls and defines that action is `.github/workflows/workflow.yml`. I would highly recommend going through the relevant documentation if one's gonna go this route.
 
 ## Usage
 
 Have the following line in your config file:
-
 ```yaml
 theme: minima
 ```
+### Portfolio configuration
 
-
-### Customizing templates
-
-To override the default structure and style of minima, simply create the concerned directory at the root of your site, copy the file you wish to customize to that directory, and then edit the file.
-e.g., to override the [`_includes/head.html `](_includes/head.html) file to specify a custom style path, create an `_includes` directory, copy `_includes/head.html` from minima gem folder to `<yoursite>/_includes` and start editing that file.
-
-The site's default CSS has now moved to a new place within the gem itself, [`assets/css/style.scss`](assets/css/style.scss).
-
-In Minima 3.0, if you only need to customize the colors of the theme, refer to the subsequent section on skins. To have your
-*CSS overrides* in sync with upstream changes released in future versions, you can collect all your overrides for the Sass
-variables and mixins inside a sass file placed at `_sass/minima/custom-variables.scss` and all other overrides inside a sass file
-placed at path `_sass/minima/custom.scss`.
-
-You need not maintain entire partial(s) at the site's source just to override a few styles. However, your stylesheet's primary
-source (`assets/css/style.scss`) should contain the following:
-
-  - Front matter dashes at the very beginning (can be empty).
-  - Directive to import a skin.
-  - Directive to import the base styles (automatically loads overrides when available).
-
-Therefore, your `assets/css/style.scss` should contain the following at minimum:
-
-```sass
----
----
-
-@import "minima/skins/{{ site.minima.skin | default: 'classic' }}";
-@import "minima/initialize";
-```
-
-#### Skins
-
-Minima 3.0 supports defining and switching between multiple color-palettes (or *skins*).
-
-```
-.
-├── minima.scss
-└── minima
-    └── _syntax-highlighting.scss
-```
-
-
-A skin is a Sass file placed in the directory `_sass/minima/skins` and it defines the variable defaults related to the "color"
-aspect of the theme. It also embeds the Sass rules related to syntax-highlighting since that is primarily related to color and
-has to be adjusted in harmony with the current skin.
-
-The default color palette for Minima is defined within `_sass/minima/skins/classic.scss`. To switch to another available skin,
-simply declare it in the site's config file. For example, to activate `_sass/minima/skins/dark.scss` as the skin, the setting
-would be:
-
+The `portfolio.html` relys on a definition of a dedicated [collection](https://jekyllrb.com/docs/collections/), called `portfolio`. The markdown files for this collection are placed in the `_portfolio/` directory, as decribed above. Have the following in your `_config.yml`:
 ```yaml
-minima:
-  skin: dark
+collections:
+  portfolio:
+    sort_by: place # Optional, less comfortable to use then order.
+    order: # Optional, but much better in practice than sort_by.
+      - project5.md
+      - project2.md
+      - project1.md
 ```
-
-As part of the migration to support skins, some existing Sass variables have been retired and some **have been redefined** as
-summarized in the following table:
-
-Minima 2.0      | Minima 3.0
---------------- | ----------
-`$brand-color`  | `$link-base-color`
-`$grey-*`       | `$brand-*`
-`$orange-color` | *has been removed*
-
-##### Available skins
-
-- classic
-- dark
-- solarized
-- solarized-dark
-
-### Customize navigation links
-
-This allows you to set which pages you want to appear in the navigation area and configure order of the links.
-
-For instance, to only link to the `about` and the `portfolio` page, add the following to your `_config.yml`:
-
-```yaml
-header_pages:
-  - about.md
-  - portfolio.md
-```
-
-
-### Change default date format
-
-You can change the default date format by specifying `site.minima.date_format`
-in `_config.yml`.
-
-```
-# Minima date format
-# refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
-minima:
-  date_format: "%b %-d, %Y"
-```
-
-
-### Extending the `<head />`
-
-You can *add* custom metadata to the `<head />` of your layouts by creating a file `_includes/custom-head.html` in your source directory. For example, to add favicons:
-
-1. Head over to [https://realfavicongenerator.net/](https://realfavicongenerator.net/) to add your own favicons.
-2. [Customize](#customization) default `_includes/custom-head.html` in your source directory and insert the given code snippet.
-
-
-### Enabling comments (via Disqus)
-
-Optionally, if you have a Disqus account, you can tell Jekyll to use it to show a comments section below each post.
-
-To enable it, add the following lines to your Jekyll site:
-
-```yaml
-  disqus:
-    shortname: my_disqus_shortname
-```
-
-You can find out more about Disqus' shortnames [here](https://help.disqus.com/installation/whats-a-shortname).
-
-Comments are enabled by default and will only appear in production, i.e., `JEKYLL_ENV=production`
-
-If you don't want to display comments for a particular post you can disable them by adding `comments: false` to that post's YAML Front Matter.
-
-:warning: `url`, e.g. `https://example.com`, must be set in you config file for Disqus to work.
+In the above example, The projects will be displayed in the following order:
+  1. Project5
+  1. Project2
+  1. Project1
+  1. Project3
+  1. Project4
+  
+Followed by any other projects found in the `_portfolio/` directory
 
 ### Author Metadata
 
@@ -242,18 +122,12 @@ From `Minima-3.0` onwards, `site.author` is expected to be a mapping of attribut
 ```yaml
 author:
   name: John Smith
+  copyright-year: 2020
   email: "john.smith@foobar.com"
 ```
 
-To migrate existing metadata, update your config file and any reference to the object in your layouts and includes as summarized below:
-
-Minima 2.x    | Minima 3.0
-------------- | -------------------
-`site.author` | `site.author.name`
-`site.email`  | `site.author.email`
-
-
 ### Social networks
+*Added the [Hackaday logo](https://hackaday.io/project/165314-hackaday-social-media-icon).*
 
 You can add links to the accounts you have on other sites, with respective icon, by adding one or more of the following options in your config.
 From `Minima-3.0` onwards, the usernames are to be nested under `minima.social_links`, with the keys being simply the social-network's name:
@@ -261,6 +135,7 @@ From `Minima-3.0` onwards, the usernames are to be nested under `minima.social_l
 ```yaml
 minima:
   social_links:
+    hackaday: UriSh
     twitter: jekyllrb
     github: jekyll
     stackoverflow: "11111"
@@ -292,15 +167,6 @@ minima:
 ```
 
 
-### Enabling Google Analytics
-
-To enable Google Analytics, add the following lines to your Jekyll site:
-
-```yaml
-  google_analytics: UA-NNNNNNNN-N
-```
-
-Google Analytics will only appear in production, i.e., `JEKYLL_ENV=production`
 
 ### Enabling Excerpts on the Home Page
 
@@ -311,9 +177,6 @@ show_excerpts: true
 ```
 
 
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/jekyll/minima. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## Development
 
