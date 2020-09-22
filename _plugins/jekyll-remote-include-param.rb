@@ -19,12 +19,12 @@ module Jekyll
       local_url = nil
       begin
         # some_code
-        print("try\n")
+        # print("try\n")
         URI.parse((@remote_include).strip)
         open("#{@remote_include}")
       rescue
         # handle_error
-        print("catch\n")
+        # print("catch\n")
         URI.parse(context[@remote_include.strip].strip)
         open("#{context[@remote_include.strip]}")
       end
