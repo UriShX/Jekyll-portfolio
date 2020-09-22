@@ -37,11 +37,16 @@ module Jekyll
         code = super.to_s.gsub(LEADING_OR_TRAILING_LINE_TERMINATORS, "")
 
         
-        if ::Rouge::Lexer.find(@lang.downcase) != nil
-          @lang = @lang.downcase
-        elsif ::Rouge::Lexer.find((context[@lang]).downcase) != nil
+        # if ::Rouge::Lexer.find(@lang.downcase) != nil
+        #   @lang = @lang.downcase
+        # else
+        begin
+          ::Rouge::Lexer.find((context[@lang]).downcase) != nil
           @lang = (context[@lang]).downcase
+        rescue
+          @lang = @lang.downcase
         end
+        # end
         
         output =
           case context.registers[:site].highlighter
