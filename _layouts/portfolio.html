@@ -23,7 +23,7 @@ layout: default
             <a href="#{{ tag }}">{{ tag }}</a>
         {% endfor %}
     </div>
-    
+
     <div class="portfolio-wrapper">
         {% for project in site.portfolio %}
             {% assign imageFolder = project.relative_path | replace: portfolioDir, '/assets/img/portfolio' | replace: '.md', '/' %}
@@ -34,8 +34,8 @@ layout: default
             {% else %}
                 {% assign align-class="portfolio-r" %}
             {% endif %}
-            <div class="portfolio-block {{ align-class }} {{ project.tags | join: " "}}" id="portfolio-block-{{ projectIndex }}">
-                <div class="portfolio-front" style="background-image: url('{% if project.cover %}{{ project.cover | prepend: imageFolder | relative_url }}{% else %}{{ "/assets/img/logo.png" | relative_url }}{% endif %}');"></div>
+            <div "}}" class="portfolio-block {{ align-class }} {{ project.tags | join: " id="portfolio-block-{{ projectIndex }}">
+                <div /assets/img/logo.png" | relative_url }}{% endif %}');" class="portfolio-front" style="background-image: url('{% if project.cover %}{{ project.cover | prepend: imageFolder | relative_url }}{% else %}{{ "></div>
                 <div class="portfolio-overlay"></div>
                 <div class="portfolio-excerpt">
                     {% if project.title %}
@@ -107,15 +107,15 @@ layout: default
                                 <div class="modal-content">
                                     {% if i.md %}
                                         {% capture mdurl %}
-                                            {% remote_include_param {{ i.md }} %}
+                                            {% remote_include {{ i.md }} %}
                                         {% endcapture %}
                                         {{ mdurl | strip | markdownify }}
                                     {% else %}
                                         {% capture codeurl %}
-                                            {% remote_include_param {{ i.code }} %}
+                                            {% remote_include {{ i.code }} %}
                                         {% endcapture %}
                                         {% highlight_param i.lang %}
-                                            {{ codeurl | strip }}
+                                        {{ codeurl | strip }}
                                         {% endhighlight_param %}
                                     {% endif %}
                                 </div>
@@ -139,7 +139,7 @@ layout: default
                         </section>
                     {% endif %}
                 {% endfor %}
-                
+
                 {% if project.modal[0].md or project.modal[0].code %}
                     {% assign modaltest = true %}
                 {% else %}

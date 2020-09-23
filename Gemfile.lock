@@ -1,3 +1,16 @@
+GIT
+  remote: https://github.com/UriShX/jekyll-highlight-param.git
+  revision: 68c95956e041cc507a92bb8a71f93c36965f19e6
+  specs:
+    jekyll-highlight-param (0.0.1)
+
+GIT
+  remote: https://github.com/UriShX/jekyll-remote-include.git
+  revision: 70600030e126f410469d5c4fd49a301a5788bc08
+  branch: context-variables
+  specs:
+    jekyll-remote-include (1.0.1)
+
 PATH
   remote: .
   specs:
@@ -75,6 +88,8 @@ PLATFORMS
 DEPENDENCIES
   bundler
   jekyll (~> 4.1)
+  jekyll-highlight-param!
+  jekyll-remote-include!
   minima!
 
 BUNDLED WITH
