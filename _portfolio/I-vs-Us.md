@@ -1,6 +1,6 @@
 ---
 cover: I-vs-Us_motor-and-links.jpeg
-title: I vs. Us, Ricky Stollar, 2020
+title: I vs. Us, Riki Stollar, 2020
 tags: mechanical
 modal:
   - img: I-vs-Us_portrait.jpeg
