@@ -110,7 +110,11 @@ layout: default
 
                 <div class="modal-inner">
                     <header>
-                        <h2 id="stackable-label">Stacked modal</h2>
+                        {% if i.md %}
+                        <h2 id="stackable-label">Markdown / Readme</h2>
+                        {% elsif i.code %}
+                        <h2 id="stackable-label">Code: {{ i.code.lang }}</h2>
+                        {% endif %}
                     </header>
                     <div class="modal-content">
                         {% if i.md %}
@@ -118,13 +122,19 @@ layout: default
                         {% remote_include {{ i.md }} %}
                         {% endcapture %}
                         {{ mdurl | strip | markdownify }}
-                        {% else %}
+                        {% elsif i.code %}
                         {% capture codeurl %}
-                        {% remote_include {{ i.code }} %}
+                        {% remote_include {{ i.code.link }} %}
                         {% endcapture %}
-                        {% highlight_param i.lang %}
+                        {% if i.code.linenos %}
+                        {% highlight_param {{ i.code.lang }} {{ i.code.linenos }} %}
                         {{ codeurl | strip }}
                         {% endhighlight_param %}
+                        {% else %}
+                        {% highlight_param {{ i.code.lang }} %}
+                        {{ codeurl | strip }}
+                        {% endhighlight_param %}
+                        {% endif %}
                         {% endif %}
                     </div>
                     <footer>
@@ -243,6 +253,23 @@ layout: default
         }
 
     })();
+</script>
+
+<script>
+    function handleResize() {
+        if (window.innerWidth <= 640) {
+            document.querySelectorAll('.portfolio-modal').forEach((_) => {
+                _.setAttribute('data-cssmodal-resize', 'false');
+            })
+        } else {
+            document.querySelectorAll('.portfolio-modal').forEach((_) => {
+                _.setAttribute('data-cssmodal-resize', 'true');
+            })
+        }
+    }
+
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("load", handleResize);
 </script>
 
 <script src="{{ "/assets/script/portfolio-tag-filter.js" | relative_url }}"></script>
