@@ -37,7 +37,7 @@ layout: default
         <div class="portfolio-block {{ align-class }} {{ project.tags | join: " "}}"
             id="portfolio-block-{{ projectIndex }}">
             <div class="portfolio-front"
-                style="background-image: url('{% if project.cover %}{{ project.cover | prepend: imageFolder | relative_url }}{% else %}{{ "/assets/img/logo.png" | relative_url }}{% endif %}');">
+                style="background-image: url('{% if project.cover %}{{ project.cover | prepend: imageFolder | relative_url }}{% elsif project.modal[0].code %}{{ "/assets/img/logo_code.png" | relative_url }}{% elsif project.modal[0].img %}{{ project.modal[0].img | prepend: imageFolder | relative_url }}{% else %}{{ "/assets/img/logo_old.png" | relative_url }}{% endif %}');">
             </div>
             <div class="portfolio-overlay"></div>
             <div class="portfolio-excerpt">
