@@ -1,1 +1,14 @@
 // Placeholder to allow overriding predefined variables smoothly.
+
+/** minima/initialize.scss */
+
+$base-font-family: 'Alef', sans-serif;
+$headings-font-family: 'Tinos', serif;
+$browser-context: $base-font-size / 1px;
+
+$on-phone: 400px !default;
+
+$on-small: $on-phone !default;
+
+$grid-gap: 10px !default;
+$portfolio-max-block-size: 380px !default;
