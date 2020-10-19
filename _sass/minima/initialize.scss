@@ -2,34 +2,25 @@
 
 // Define defaults for each variable.
 
-$base-font-family: 'Alef', sans-serif;
-$headings-font-family: 'Tinos', serif;
-// $base-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Segoe UI Symbol", "Segoe UI Emoji", "Apple Color Emoji", Roboto, Helvetica, Arial, sans-serif !default;
-$code-font-family: 'Menlo', 'Inconsolata', 'Consolas', 'Roboto Mono',
-  'Ubuntu Mono', 'Liberation Mono', 'Courier New', monospace;
-$base-font-size: 16px !default;
-$browser-context: $base-font-size / 1px;
+$base-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Segoe UI Symbol", "Segoe UI Emoji", "Apple Color Emoji", Roboto, Helvetica, Arial, sans-serif !default;
+$code-font-family: "Menlo", "Inconsolata", "Consolas", "Roboto Mono", "Ubuntu Mono", "Liberation Mono", "Courier New", monospace;
+$base-font-size:   16px !default;
 $base-font-weight: 400 !default;
-$small-font-size: $base-font-size * 0.875 !default;
+$small-font-size:  $base-font-size * 0.875 !default;
 $base-line-height: 1.5 !default;
 
-$spacing-unit: 30px !default;
+$spacing-unit:     30px !default;
 
 $table-text-align: left !default;
 
 // Width of the content area
-$content-width: 800px !default;
+$content-width:    800px !default;
 
-$on-phone: 400px !default;
-$on-palm: 600px !default;
-$on-laptop: 800px !default;
+$on-palm:          600px !default;
+$on-laptop:        800px !default;
 
-$on-small: $on-phone !default;
-$on-medium: $on-palm !default;
-$on-large: $on-laptop !default;
-
-$grid-gap: 10px !default;
-$portfolio-max-block-size: 380px !default;
+$on-medium:        $on-palm !default;
+$on-large:         $on-laptop !default;
 
 // Use media queries like this:
 // @include media-query($on-palm) {
@@ -50,43 +41,10 @@ $portfolio-max-block-size: 380px !default;
   font-size: #{$ratio}rem;
 }
 
-/* mixin for multiline http://hackingui.com/front-end/a-pure-css-solution-for-multiline-text-truncation/ */
-@mixin multiLineEllipsis($lineHeight: 1.2em, $lineCount: 1, $bgColor: white) {
-  overflow: hidden;
-  position: relative;
-  line-height: $lineHeight;
-  max-height: $lineHeight * $lineCount;
-  text-align: justify;
-  margin-right: -1em;
-  padding-right: 1em;
-  &:before {
-    content: '...';
-    position: absolute;
-    right: 0;
-    bottom: 0;
-  }
-  &:after {
-    content: '';
-    position: absolute;
-    right: 0;
-    width: 1em;
-    height: 1em;
-    margin-top: 0.2em;
-    background: $bgColor;
-  }
-}
-
 // Import pre-styling-overrides hook and style-partials.
-@import 'minima/custom-variables',
-  // Hook to override predefined variables.
-    'minima/base',
-  // Defines element resets.
-    'minima/layout',
-  // Css-modal
-    'drublic-css-modal/modal',
-  'drublic-css-modal/plugins/modal-gallery',
-  'drublic-css-modal/plugins/modal-spinner',
-  // Defines structure and style based on CSS selectors.
-    'minima/custom-styles',
-  // Highlighter css
-    url('zenburn.css');
+@import
+  "minima/custom-variables", // Hook to override predefined variables.
+  "minima/base",             // Defines element resets.
+  "minima/layout",           // Defines structure and style based on CSS selectors.
+  "minima/custom-styles"     // Hook to override existing styles.
+;
