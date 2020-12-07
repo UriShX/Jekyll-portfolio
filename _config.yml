@@ -12,30 +12,31 @@ banner: banner.png
 # baseurl: '/Jekyll-portfolio' # the subpath of your site, e.g. /blog
 url: 'https://urishx.github.io' # the base hostname & protocol for your site, e.g. http://example.com
 
-show_excerpts: true # set to true to show excerpts on the homepage
-
-timezone: IL
-
 collections:
   portfolio:
     sort_by: place
     order:
-      - perpetuum-mobile.md
-      - niti-light.md
-      - uav-fuel-tank.md
-      - toy-sound-box-prototype.md
-      - mechanical-sieve.md
-      - fuel-gun.md
-      - smart-scale.md
-      - concrete-pot.md
-      - elastomeric-part-design.md
-      - aerial-warning-ball.md
-      - ziv-foot-rest.md
       - parametric-design-openscad.md
       - web-ble-basic-control.md
-      - ab4mc.md
-      - cap-sense-name-card.md
-      - sus-comp-agriwaste.md
+
+# If you want to link only specific pages in your header, uncomment
+# this and add the path to the pages in order as they should show up
+# header_pages:
+# - about.md
+
+# Minima / Jekyll setup options
+# 
+# Build settings
+theme: minima
+
+# API settings
+# google_api_key:
+
+# Build settings
+markdown: kramdown
+show_excerpts: true # set to true to show excerpts on the homepage
+
+timezone: IL
 
 # Minima date format
 # refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this
@@ -75,16 +76,29 @@ minima:
     # - username: jekyll2
     #   instance: example.com
 
-# If you want to link only specific pages in your header, uncomment
-# this and add the path to the pages in order as they should show up
-#header_pages:
-# - about.md
+# Staticman configuration
+# See https://travisdowns.github.io/blog/2020/02/05/now-with-comments.html for 
+# step-by-step instructions
+# 
+# The URL for the staticman API bridge endpoint
+# You will want to modify some of the values:
+#  ${github-username}: the username of the account with which you publish your blog
+#  ${blog-repo}: the name of your blog repository in github
+#  master: this the branch out of which your blog is published, often master or gh-pages
+#  ${bridge_app_name}: the name you chose in Heroku for your bridge API
+#  comments: the so-called property, this defines the key in staticman.yml where the configuration is found
+# 
+# staticman_url: https://${bridge_app_name}.herokuapp.com/v2/entry/${github-username}/${blog-repo}/master/comments
 
-# Build settings
-theme: minima
+# reCaptcha configuration info: the exact same site key and *encrypted* secret that you used in staticman.yml
+# I personally don't think the secret needs to be included in the generated site, but the staticman API bridge uses
+# it to ensure the site configuration and bridge configuration match (but why not just compare the site key?)
+# 
+# reCaptcha:
+#   enabled: true
+#   siteKey: siteKey from Google reCaptcha
+#   secret: exactly the same secret as the staticman.yml file
 
 plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
   - jekyll-highlight-param
   - jekyll-remote-include
