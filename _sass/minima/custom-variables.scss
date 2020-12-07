@@ -8,10 +8,11 @@ $browser-context: $base-font-size / 1px;
 
 $on-phone: 400px !default;
 
+$on-med-wide: 856px !default;
 $on-small: $on-phone !default;
 
 $grid-gap: 10px !default;
 $portfolio-max-block-size: 380px !default;
 
 $navlink-current-color: $sol-violet;
-$navlink-hover-color:   $sol-orange;
+$navlink-hover-color: $sol-orange;

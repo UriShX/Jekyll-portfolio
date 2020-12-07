@@ -9,7 +9,9 @@
     'drublic-css-modal/plugins/modal-gallery',
     'drublic-css-modal/plugins/modal-spinner',
     // Highlighter css
-    url('zenburn.css');
+    url('zenburn.css'),
+    // Staticman comments styling
+    '../comment-styles.scss';
 
 
 /** minima/_base.scss */
@@ -19,6 +21,11 @@
   */
 h1, h2, h3, h4, h5, h6 {
     font-family: $headings-font-family;
+}
+
+
+.highlighter-rouge .highlight  {
+  background-color: #3f3f3f;
 }
 
 /** minima/_layout.scss */
@@ -147,9 +154,20 @@ h1, h2, h3, h4, h5, h6 {
         font-style: oblique;
     }
 
+    // @media screen and (min-width: $on-large) {
+    //   top: unquote('calc(max(14.1vw, 165px) - 1.6rem)');
+    // }
+
+    @media screen and (min-width: $on-med-wide) {
+      top: unquote('calc(max(14.1vw, 165px) - 1.6rem)');
+    }
+
+    @media screen and (min-width: $on-medium) and (max-width: $on-med-wide) {
+      top: unquote('calc(max(14.1vw, 200.25px) - 1.6rem)');
+    }
+
     @media screen and (min-width: $on-medium) {
         position: absolute;
-        top: unquote('calc(max(14.1vw, 165px) - 1.6rem)');
         right: 0;
         margin-right: 0;
         padding-right: unquote('max(calc((100% - #{$content-width}) / 2), 10vw)');
