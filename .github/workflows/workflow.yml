@@ -1,75 +1,39 @@
-name: Build and deploy jekyll site
+# This CI will run after publish a new release
+
+name: Push to Other Repo and Make a PR
 
 on:
+  # release:
+  #   types: [published]
   push:
     branches:
       - master
-      # - source
       # It is highly recommended that you only run this action on push to a
       # specific branch, eg. master or source (if on *.github.io repo)
-
+  
 jobs:
-  jekyll:
-    runs-on: ubuntu-16.04 # can change this to ubuntu-latest if you prefer
+  processing_docs:
+    runs-on: ubuntu-latest
     steps:
-      - name: 📂 setup
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+      - name: Push then create PR
+        uses: sepulsa/push_then_pr@master
+        env:
+            API_TOKEN_GITHUB: ${{ secrets.PERSONAL_TOKEN }}
 
-        # include the lines below if you are using jekyll-last-modified-at
-        # or if you would otherwise need to fetch the full commit history
-        # however this may be very slow for large repositories!
-        # with:
-        # fetch-depth: '0'
-      - name: 💎 setup ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 2.6 # can change this to 2.7 or whatever version you prefer
-
-      - name: 🔨 install dependencies & build site
-        uses: limjh16/jekyll-action-ts@v2
-        with:
-          enable_cache: true
-          ### Enables caching. Similar to https://github.com/actions/cache.
-          #
-          format_output: true
-          ### Uses prettier https://prettier.io to format jekyll output HTML.
-          #
-          prettier_opts: '{ "useTabs": true }'
-          ### Sets prettier options (in JSON) to format output HTML. For example, output tabs over spaces.
-          ### Possible options are outlined in https://prettier.io/docs/en/options.html
-          #
-          # prettier_ignore: 'about/*'
-          ### Ignore paths for prettier to not format those html files.
-          ### Useful if the file is exceptionally large, so formatting it takes a while.
-          ### Also useful if HTML compression is enabled for that file / formatting messes it up.
-          #
-          # jekyll_src: sample_site
-          ### If the jekyll website source is not in root, specify the directory. (in this case, sample_site)
-          ### By default, this is not required as the action searches for a _config.yml automatically.
-          #
-          # gem_src: sample_site
-          ### By default, this is not required as the action searches for a _config.yml automatically.
-          ### However, if there are multiple Gemfiles, the action may not be able to determine which to use.
-          ### In that case, specify the directory. (in this case, sample_site)
-          ###
-          ### If jekyll_src is set, the action would automatically choose the Gemfile in jekyll_src.
-          ### In that case this input may not be needed as well.
-          #
-          # key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-          # restore-keys: ${{ runner.os }}-gems-
-          ### In cases where you want to specify the cache key, enable the above 2 inputs
-          ### Follows the format here https://github.com/actions/cache
-
-      - name: 🚀 deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          personal_token: ${{ secrets.PERSONAL_TOKEN }}
-          # deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          external_repository: UriShX/urishx.github.io
-          publish_branch: master
-          publish_dir: ./_site
-          # github_token: ${{ secrets.GITHUB_TOKEN }}
-          # publish_dir: ./_site
-          # if the repo you are deploying to is <username>.github.io, uncomment the line below.
-          # if you are including the line below, make sure your source files are NOT in the master branch:
-          # publish_branch: master
+            DEST_GITHUB_USERNAME: 'urishx'
+            DEST_REPO_NAME: 'microblog'
+            USER_EMAIL: 'usdogi@gmail.com'
+            PUSH_TO_BRANCH: 'jekyll-portfolio'
+            PR_TO_BRANCH: 'master'
+            # You can add multiple source file or folder separate by space
+            SRC_DIR: '_includes _layouts _sass assets/script' 
+            # You can create nested folder
+            # DEST_DIR: 'initiative/system_name'
+            # You can rename with format source(comma)target
+            # Multiple line if you want to move multiple file / folder
+            # RENAME: >-
+            #         readme.adoc,docs.adoc
+            #         docs,docs
+            # Add your custom Pull Request message
+            PR_MESSAGE: 'Edits in github.com/urishx/jekyll-portfoilio'
