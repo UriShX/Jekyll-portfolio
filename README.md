@@ -1,13 +1,14 @@
 # Jekyll-portfolio
-A Jekyll template based on the [Minima](https://github.com/jekyll/minima) theme, with the addition of a portfolio template.
+A Jekyll template based on the [Minima](https://github.com/jekyll/minima) theme, with the addition of a portfolio page template.
 
-Deployment to github pages is done through Githu action, see below.
+Deployment to github pages is done through Github action, see below.
 
 ## Contents At-A-Glance
 
-The theme is based on [Minima](https://github.com/jekyll/minima), with slightly modified site branding, and an addition of a `portfolio` layout.
+This template is based on the latest version of [Minima](https://github.com/jekyll/minima), with slightly modified site branding, an addition of a `portfolio` layout, and [Staticman](https://staticman.net/) static comments support.
 
-*For all other files and configuration options not described here, please refer to the [Minima](https://github.com/jekyll/minima) documentation*
+- *For all other files and configuration options not described here, please refer to the [Minima](https://github.com/jekyll/minima) documentation*
+- *For a step-by-step tutorial on how to set up [Staticman](https://staticman.net/) for your own site, please refer to [Travis Downs'](https://travisdowns.github.io/blog/2020/02/05/now-with-comments.html) post on the subject.*
 
 ### Layouts
 
@@ -15,7 +16,7 @@ Refers to files within the `_layouts` directory, that define the markup for your
 
   - `portfolio.html` &mdash; The layout for your portfolio. Builds your portfolio based on a collection stored in `_portfolio`. \
   This file will only render if a `.md` page with `layout: portfolio` in it's front matter is present
-
+  - `post.html` &mdash; Modified from [Minima's](https://github.com/jekyll/minima) version to include [Staticman](https://staticman.net/) static comments.
 
 ### Portfolio
 Refers to files within the `_portfolio` directory, which contain the Markdown files that define each portfolio project, and contain the brief description of the project to be displayed in `mouseover` events.
@@ -28,15 +29,17 @@ title: "A short title" # Will display in the short description of the project.
 tags: tag1 tag2 # Tags for filtering relevant projects by buttons in the portfolio.html layout.
 link: https://github.com/UriShX/Jekyll-portfolio # Optional, if the project can be linked to a blog post, etc.
 modal:
-  - code: https://raw.githubusercontent.com/githubuser/portfolio/master/some-arduino-script.ino
-    lang: cpp # Required if code key is in use
+  - code:
+        link: https://raw.githubusercontent.com/githubuser/portfolio/master/some-arduino-script.ino
+        lang: cpp # Required if code key is in use
+        # linenos: linenos="1 22"
   - md: https://raw.githubusercontent.com/githubuser/portfolio/master/README.md
   - img: project_image1.png # See assets/img/portfolio, below.
   - img: project_image2.gif # See assets/img/portfolio, below.
   - img: coverimg.jpg # See assets/img/portfolio, below.
 ```
 
-The `modal` key elements' order defines the default behaviour of the gallery modal windows. If the first element is either a `md` or a `code` link, the first modal will display the parsed content of this file, and will display a link to a lightbox gallery. If the first element is `img`, the first modal to display for each project will be a lightbox, and if one of the `modal` sub-keys is either `md` or `code` they will be displayed as a placeholder image link, which when pressed will lead to the modal containing the parsed code or markdown.
+The `modal` key elements' order defines the default behavior of the gallery modal windows. If the first element is either a `md` or a `code` link, the first modal will display the parsed content of this file, and will display a link to a lightbox gallery. If the first element is `img`, the first modal to display for each project will be a lightbox, and if one of the `modal` sub-keys is either `md` or `code` they will be displayed as a placeholder image link, which when pressed will lead to the modal containing the parsed code or markdown.
 
 *The front matter does not have to contain any subkeys in the `modal` key to disaply the project with a brief description and a cover image*
 
@@ -45,14 +48,13 @@ The `modal` key elements' order defines the default behaviour of the gallery mod
 Refers to `.scss` files within the `_sass` directory that define the theme's styles.
 
   - `drublic-css-modal/` &mdash; This library contains the CSS based modal files. See documentation at [css-modal](https://drublic.github.io/css-modal/).
+  - `minima/` &mdash; This library contains the customized files which define the layout for [Minima](https://github.com/jekyll/minima),including the portfolio layout, the custom header, and the imports of all `.scss` and `.css` files.
   
 
 ### Assets
 
 Refers to various asset files within the `assets` directory.
 
-  - `assets/css/style.scss` &mdash; Imports sass files from within the `_sass` directory and gets processed into the theme's
-    stylesheet: `assets/css/styles.css`.
   - `assets/css/zenburn.css` &mdash; Pygments / Rouge code highlighting. From [jekyll-pygments-themes](https://jwarby.github.io/jekyll-pygments-themes/languages/ruby.html).
   - `assets/img/banner.png` &mdash; Site branding banner. Configure in `_config.yml`.
   - `assets/img/logo.png` &mdash; Site branding logo. Used as placeholder cover image for portfolio projects which do not specify a cover image in their front matter. Configure in `_config.yml`.
@@ -71,25 +73,31 @@ Refers to various asset files within the `assets` directory.
   - `assets/img/portfolio/twotone_description_black_48pt_3x.png` &mdash; Placeholder image for modal galleries which contain both code or markdown files as well as images.
   - `assets/script/modal*` &mdash; Files used by `css-modal`, for use in portfolio projects.
   - `assets/scripts/portfolio-tag-filter.js` &mdash; Used in `portfolio.html`. Filters portfolio projects according to selected tag (button), and changes the close `<a>` tag `href` to the selcted tag.
-  - `assets/minima-social-icons.svg` &mdash; A composite SVG file comprised of *symbols* related to various social-media icons.
-    This file is used as-is without any processing. Refer [section on social networks](#social-networks) for its usage.
-    *Added the [Hackaday logo](https://hackaday.io/project/165314-hackaday-social-media-icon).*
+  - `assets/script/staticman-comments.js` &mdash; Static comments JS controller, for use with [Staticman](https://staticman.net/).
+  - `assets/minima-social-icons.svg` &mdash; A composite SVG file comprised of *symbols* related to various social-media icons. \
+  This file is used as-is without any processing. Refer [section on social networks](#social-networks) for its usage.\
+  *Added the [Hackaday logo](https://hackaday.io/project/165314-hackaday-social-media-icon).*
 
 
 ### Plugins
 
- - Minima comes with [`jekyll-seo-tag`](https://github.com/jekyll/jekyll-seo-tag) plugin preinstalled to make sure your website gets the most useful meta tags. See [usage](https://github.com/jekyll/jekyll-seo-tag#usage) to know how to set it up.
-
-  - `_plugins/jekyll-remote-include-param.rb` &mdash; Based on [netrics/jekyll-remote-include](https://github.com/netrics/jekyll-remote-include). I've added the possibilty to allow passing the `link` parameter to the Liquid tag, in order to get the link from a portfolio project's front matter.
-  - `_plugins/jekyll-rouge-param.rb` &mdash; Based on Jekyll's [highlight](https://jekyllrb.com/docs/liquid/tags/#code-snippet-highlighting) Liquid tag to allow passing the `language` parameter from a portfolio project's front matter. \
-  [Jekyll's original code](https://github.com/jekyll/jekyll/blob/master/lib/jekyll/tags/highlight.rb) finds the relevant language in its lexers in its `def render_rouge(code)` function, where in my modified plugin a test is done in the `def render(context)` function, thus allowing for testing the `@lang` variable in `context`.
+- Minima comes with [`jekyll-seo-tag`](https://github.com/jekyll/jekyll-seo-tag) plugin preinstalled to make sure your website gets the most useful meta tags. See [usage](https://github.com/jekyll/jekyll-seo-tag#usage) to know how to set it up.
+- Plugins included in the `Gemfile`: 
+  - [`jekyll-remote-include`](https://github.com/UriShX/jekyll-remote-include/tree/context-variables) &mdash; Based on [netrics/jekyll-remote-include](https://github.com/netrics/jekyll-remote-include). \
+  I've added the possibility to allow passing the `link` parameter to the Liquid tag, in order to get the link from a portfolio project's front matter. \
+  There's an open [pull request](https://github.com/netrics/jekyll-remote-include/pull/2) for the change.
+  - [`jekyll-highlight-param`](https://github.com/UriShX/jekyll-highlight-param) &mdash; Based on Jekyll's [highlight](https://jekyllrb.com/docs/liquid/tags/#code-snippet-highlighting) Liquid tag to allow passing the `language` parameter from a portfolio project's front matter.
 
 ### Deploy to github
-Since the site uses plugins and a custom template, I used a Github action by [limjh16/jekyll-action-ts](https://github.com/limjh16/jekyll-action-ts) to publish the site too github pages. Since this action uses [peaceiris/actions-gh-pages](https://github.com/peaceiris/actions-gh-pages) in it's workflow, I was able to publish the site to my github user site, instead of the project folder.
+Since the site uses plugins and a custom template, I am using a Github action by [limjh16/jekyll-action-ts](https://github.com/limjh16/jekyll-action-ts) to publish the site to github pages. \
+You can find a sample workflow file for publishing the site to a github pages user site in the main directory of this repo, named `sample_publish_workflow.yml`.
 
-The file that calls and defines that action is `.github/workflows/workflow.yml`. I would highly recommend going through the relevant documentation if one's gonna go this route.
+Since this repository contains only the template for [my site](https://urishx.github.io), it uses a [workflow by sepulsa](https://github.com/sepulsa/push_then_pr) to create a PR on my site's hidden repository. You can find that workflow configuration file for this repo, under `.github\workflows`.
+
 
 ## Usage
+
+**To use this template you can download or `git clone` this repository. _If you do, please replace the site's branding (`assets\img\logo.png`, `assets\img\log_code.png`, `assets\img\banner.png`), and replace it with your own_** \
 
 Have the following line in your config file:
 ```yaml
@@ -128,46 +136,9 @@ author:
 ```
 
 ### Social networks
-*Added the [Hackaday logo](https://hackaday.io/project/165314-hackaday-social-media-icon).*
+I have added the [Hackaday logo](https://hackaday.io/project/165314-hackaday-social-media-icon) to [Minima's](https://github.com/jekyll/minima) default social networks icons. \
 
-You can add links to the accounts you have on other sites, with respective icon, by adding one or more of the following options in your config.
-From `Minima-3.0` onwards, the usernames are to be nested under `minima.social_links`, with the keys being simply the social-network's name:
-
-```yaml
-minima:
-  social_links:
-    hackaday: UriSh
-    twitter: jekyllrb
-    github: jekyll
-    stackoverflow: "11111"
-    dribbble: jekyll
-    facebook: jekyll
-    flickr: jekyll
-    instagram: jekyll
-    linkedin: jekyll
-    pinterest: jekyll
-    telegram: jekyll
-    microdotblog: jekyll
-    keybase: jekyll
-
-    mastodon:
-     - username: jekyll
-       instance: example.com
-     - username: jekyll2
-       instance: example.com
-
-    gitlab:
-     - username: jekyll
-       instance: example.com
-     - username: jekyll2
-       instance: example.com
-
-    youtube: jekyll
-    youtube_channel: UC8CXR0-3I70i1tfPg1PAE1g
-    youtube_channel_name: CloudCannon
-```
-
-
+Check out the documentation for how to set up social network configuration in the [Minima](https://github.com/jekyll/minima) readme.
 
 ### Enabling Excerpts on the Home Page
 
@@ -177,13 +148,17 @@ To display post-excerpts on the Home Page, simply add the following to your `_co
 show_excerpts: true
 ```
 
+### Static comments in posts
 
+To use static comments using [Staticman](https://staticman.net/) in posts instead of [Minima's](https://github.com/jekyll/minima) default [Disqus](https://disqus.com/), [Travis Downs'](https://travisdowns.github.io/blog/2020/02/05/now-with-comments.html) post on the subject was a great starting point for me, and there's a `staticman.yml` file included in the main folder of this repo, as well as the required lines in `_config.yml` for setting up Google reCaptcha. \
+Comments are enabled in the post's front matter:
+```yaml
+comments: true
+```
 
 ## Development
 
-To set up your environment to develop this theme, run `script/bootstrap`.
-
-To test your theme, run `script/server` (or `bundle exec jekyll serve`) and open your browser at `http://localhost:4000`. This starts a Jekyll server using your theme and the contents. As you make modifications, your site will regenerate and you should see the changes in the browser after a refresh.
+To test your site, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000`. This starts a Jekyll server using your template and the contents. As you make modifications, your site will regenerate and you should see the changes in the browser after a refresh.
 
 ## License
 
