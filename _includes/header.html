@@ -13,12 +13,9 @@
         </div>
         <div class="wrapper">
             {%- assign default_paths = site.pages | map: "path" -%}
-            {%- assign
-      page_paths = site.header_pages | default: default_paths -%}
-            {%- assign
-      titles_size = site.pages | map: 'title' | join: '' | size -%}
-            {%- if
-      titles_size > 0 -%}
+            {%- assign page_paths = site.header_pages | default: default_paths -%}
+            {%- assign titles_size = site.pages | map: 'title' | join: '' | size -%}
+            {%- if titles_size > 0 -%}
                 <nav class="site-nav">
                     <input class="nav-trigger" id="nav-trigger" type="checkbox"/>
                     <label for="nav-trigger">
