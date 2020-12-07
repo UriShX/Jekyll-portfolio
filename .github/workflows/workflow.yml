@@ -27,7 +27,7 @@ jobs:
             PUSH_TO_BRANCH: 'jekyll-portfolio'
             PR_TO_BRANCH: 'master'
             # You can add multiple source file or folder separate by space
-            SRC_DIR: '_includes _layouts _sass assets/script' 
+            SRC_DIR: '_includes _layouts _sass assets' 
             # You can create nested folder
             # DEST_DIR: 'initiative/system_name'
             # You can rename with format source(comma)target
