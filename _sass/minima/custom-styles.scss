@@ -331,7 +331,7 @@ h1, h2, h3, h4, h5, h6 {
         height: $local-block-size;
         max-width: $local-max-block-size;
         max-height: $local-max-block-size;
-    
+
         &:hover {
           .portfolio-front {
             scale: 1.1;
@@ -454,6 +454,24 @@ h1, h2, h3, h4, h5, h6 {
     
           a:hover {
             text-decoration: none;
+          }
+        }
+      }
+
+      .limited-hover {
+        // pointer-events: none;
+        
+        .portfolio-overlay {
+          z-index: 2;
+          opacity: 0.25;
+        }
+  
+        .portfolio-excerpt {
+          transform: translateY($local-max-block-size);
+          z-index: 3;
+          h3,
+          p {
+            visibility: visible;
           }
         }
       }
