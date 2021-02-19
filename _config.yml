@@ -76,6 +76,22 @@ minima:
     # - username: jekyll2
     #   instance: example.com
 
+responsive_image:
+  template: _includes/srcset.html
+  sizes:
+    - width: 320
+    - width: 480
+    - width: 800
+  
+  # [Optional, Default: assets]
+  # The base directory where assets are stored. This is used to determine the
+  # `dirname` value in `output_path_format` below.
+  # base_path: assets
+
+  # [Optional, Default: true]
+  # Whether or not to save the generated assets into the source folder.
+  # save_to_source: false
+    
 # Staticman configuration
 # See https://travisdowns.github.io/blog/2020/02/05/now-with-comments.html for 
 # step-by-step instructions

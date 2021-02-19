@@ -26,7 +26,7 @@ layout: default
 
     <div class="portfolio-wrapper">
         {% for project in site.portfolio %}
-        {% assign imageFolder = project.relative_path | replace: portfolioDir, '/assets/img/portfolio' | replace: '.md', '/' %}
+        {% assign imageFolder = project.relative_path | replace: portfolioDir, 'assets/img/portfolio' | replace: '.md', '/' %}
         {% assign projectIndex = forloop.index %}
         {% assign side = projectIndex | modulo:2 %}
         {% if side == 1 %}
@@ -198,8 +198,15 @@ layout: default
                             <li data-caption="{{ j.text }}">
                                 {% if j.img %}
                                 <a href="#modal-gallery-{{ projectIndex }}/{{ forloop.index }}">
-                                    <img alt="{{ j.text }}"
-                                        data-src-fullsize="{{ j.img | prepend: imageFolder | relative_url }}">
+                                    <!-- <img alt="{{ j.text }}"
+                                        data-src-fullsize="{{ j.img | prepend: imageFolder | relative_url }}"> -->
+                                    {% responsive_image_block %}
+                                        path: {{ j.img | prepend: imageFolder }}
+                                        alt: {{ j.text }}
+                                        {% if j.title %}
+                                            title: {{ j.title }}
+                                        {% endif %}
+                                    {% endresponsive_image_block %}
                                 </a>
                                 {% elsif j.md %}
                                 <a href="#stackable-{{ projectIndex }}-{{ forloop.index }}">

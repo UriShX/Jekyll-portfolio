@@ -8,4 +8,5 @@ gem "minima", :github => 'jekyll/minima' #:git => "git@github.com:jekyll/minima.
 group :jekyll_plugins do
     gem "jekyll-remote-include", :github => 'UriShX/jekyll-remote-include', :branch => 'context-variables' #:git => "git@github.com:UriShX/jekyll-remote-include.git", :branch => "context-variables"
     gem "jekyll-highlight-param", :github => 'UriShX/jekyll-highlight-param' #:git => "git@github.com:UriShX/jekyll-highlight-param.git"
+    gem "jekyll-responsive-image"
 end

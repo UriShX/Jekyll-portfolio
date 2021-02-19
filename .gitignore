@@ -24,3 +24,6 @@ Thumbs.db
 # Misc. files created by user
 Jekyll_issue.md
 *.diff
+
+# Files genrated by jekyll-responsive-image
+assets/resized
