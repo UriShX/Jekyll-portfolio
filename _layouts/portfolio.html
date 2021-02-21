@@ -192,14 +192,12 @@ layout: default
                     <div class="modal--gallery-caption"></div>
 
                     <footer>
-                        <ul aria-hidden="true" class="modal-content-list is-active">
+                        <ul aria-hidden="true" class="modal-content-list">
                             {% for j in project.modal %}
                             {% unless j.md and forloop.first %}
                             <li data-caption="{{ j.text }}">
                                 {% if j.img %}
                                 <a href="#modal-gallery-{{ projectIndex }}/{{ forloop.index }}">
-                                    <!-- <img alt="{{ j.text }}"
-                                        data-src-fullsize="{{ j.img | prepend: imageFolder | relative_url }}"> -->
                                     {% responsive_image_block %}
                                         path: {{ j.img | prepend: imageFolder }}
                                         alt: {{ j.text }}

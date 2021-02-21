@@ -230,6 +230,12 @@
 			} else {
 				img.src = referenceImage.getAttribute('data-src-fullsize');
 				img.alt = referenceImage.getAttribute('alt');
+
+				try {
+					img.setAttribute('srcset', referenceImage.getAttribute('srcset'));
+				} catch (error) {
+					console.log(error)
+				}
 			}
 
 			// Reposition and show
